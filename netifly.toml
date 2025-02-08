@@ -1,0 +1,40 @@
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/publications.html"
+  to = "/publications"
+  status = 301
+
+[[redirects]]
+  from = "/products.html"
+  to = "/products"
+  status = 301
+
+[[redirects]]
+  from = "/art-gallery.html"
+  to = "/art-gallery"
+  status = 301
+
+[[redirects]]
+  from = "/medical-offices.html"
+  to = "/medical-offices"
+  status = 301
+
+[[redirects]]
+  from = "/property-management.html"
+  to = "/property-management"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+# Optional: Catch-all rule for other .html files (if any)
+[[redirects]]
+  from = "/*/*.html"
+  to = "/:splat"
+  status = 301
