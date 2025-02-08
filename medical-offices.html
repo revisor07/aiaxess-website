@@ -17,26 +17,9 @@
     rel="stylesheet" />
   <link href="css/styles_bootstrap.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
-
-  <style>
-    body {
-      opacity: 0;
-      transition: opacity 0.7s ease-in-out;
-    }
-
-
-    body.loaded {
-      opacity: 1;
-    }
-  </style>
 </head>
 
-<body id="page-top">
-  <script>
-    window.addEventListener('load', (event) => {
-      document.body.classList.add('loaded');
-    });
-  </script>
+<body>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -51,8 +34,7 @@
         <ul class="navbar-nav ms-auto">
           <!-- Products dropdown menu -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-              aria-expanded="false" >
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-expanded="false">
               Products
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -68,73 +50,78 @@
       </div>
     </div>
   </nav>
-        
-        
-        <section class="about-section">
-          <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center ">
-              <div class="col-lg-10">
-                <h2 class="text-white mb-4" style="text-decoration: underline; line-height:3rem">Introducing AIAxess Medical
-                  Office Assistant:<br> Your 24/7 Virtual Healthcare Ally</h2>
-                <p class="text-white-50">
-                  Tired of juggling patient inquiries and struggling to keep costs down?
-                  AIAxess Medical Office Assistant is the AI-powered solution that helps you enhance patient communication while
-                  optimizing your staffing needs
-                </p>
-              </div>
-            </div>
-            <!-- <img class="img-fluid" src="assets/img/ipad.png" alt="..." /> -->
-          </div>
-    </section>
 
-    <section class="py-5 bg-light">
-      <div class="container mb-5">
-        <div class=" row justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="mb-4 mt-4">Experience the AIAxess Difference:</h2>
-            <ul>
-              <li>
-                <p1>
-                  <b>24/7 Patient Support:</b> Our AI-powered assistant provides instant answers to common patient inquiries, such as scheduling, billing, prescription refills, and post-visit instructions.
-                </p1>
-              </li>
-              <li>
-                <p1>
-                  <b>Enhanced Patient Experience: </b> Offer seamless and personalized support, improving patient satisfaction and loyalty.
-                </p1>
-              </li>
-              <li>
-                <p1>
-                  <b>Reduced Administrative Burden:</b> Free up your staff from time-consuming administrative tasks, allowing them to focus on patient care.
-                </p1>
-              </li>
-              <li>
-                <p1>
-                  <b>Streamlined Operations:</b> Increase efficiency and improve overall practice workflow.
-                </p1>
-              </li>
-              <li>
-                <p1>
-                  <b>Access to a Wider Support Network:</b> Connect patients with valuable resources, such as support groups, counseling services, and government assistance programs.
-                </p1>
-              </li>
 
-            </ul>
-            <h2 class="mb-4 mt-4">Built with Security and Compliance in Mind:</h2>
-            <p1>AIAxess prioritizes patient privacy and data security. Our robust security layer ensures all data processing adheres to strict HIPAA regulations.</p1>
-          </div>
+  <section class="about-section">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center ">
+        <div class="col-lg-10">
+          <h2 class="text-white mb-4" style="text-decoration: underline; line-height:3rem">Introducing AIAxess Medical
+            Office Assistant:<br> Your 24/7 Virtual Healthcare Ally</h2>
+          <p class="text-white-50">
+            Tired of juggling patient inquiries and struggling to keep costs down?
+            AIAxess Medical Office Assistant is the AI-powered solution that helps you enhance patient communication
+            while
+            optimizing your staffing needs
+          </p>
         </div>
       </div>
-    </section>
+      <!-- <img class="img-fluid" src="assets/img/ipad.png" alt="..." /> -->
+    </div>
+  </section>
 
-    <footer class="footer bg-black small text-center text-white-50">
-        <div class="container px-4 px-lg-5">Copyright &copy; AIAxess 2025</div>
-    </footer>
+  <section class="py-5 bg-light">
+    <div class="container mb-5">
+      <div class=" row justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="mb-4 mt-4">Experience the AIAxess Difference:</h2>
+          <ul>
+            <li>
+              <p1>
+                <b>24/7 Patient Support:</b> Our AI-powered assistant provides instant answers to common patient
+                inquiries, such as scheduling, billing, prescription refills, and post-visit instructions.
+              </p1>
+            </li>
+            <li>
+              <p1>
+                <b>Enhanced Patient Experience: </b> Offer seamless and personalized support, improving patient
+                satisfaction and loyalty.
+              </p1>
+            </li>
+            <li>
+              <p1>
+                <b>Reduced Administrative Burden:</b> Free up your staff from time-consuming administrative tasks,
+                allowing them to focus on patient care.
+              </p1>
+            </li>
+            <li>
+              <p1>
+                <b>Streamlined Operations:</b> Increase efficiency and improve overall practice workflow.
+              </p1>
+            </li>
+            <li>
+              <p1>
+                <b>Access to a Wider Support Network:</b> Connect patients with valuable resources, such as support
+                groups, counseling services, and government assistance programs.
+              </p1>
+            </li>
 
+          </ul>
+          <h2 class="mb-4 mt-4">Built with Security and Compliance in Mind:</h2>
+          <p1>AIAxess prioritizes patient privacy and data security. Our robust security layer ensures all data
+            processing adheres to strict HIPAA regulations.</p1>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; AIAxess 2025</div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 
 </html>
