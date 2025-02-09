@@ -3517,11 +3517,10 @@ textarea.form-control-lg {
   border: 0;
   transition: background-color 0.1s ease-in-out;
 }
-@media (min-width: 992px) {
+
 .dropdown-item:hover, .dropdown-item:focus {
   color: var(--bs-dropdown-link-hover-color);
   background-color: var(--bs-dropdown-link-hover-bg);
-}
 }
 /*
 .dropdown-item.active, .dropdown-item:active {

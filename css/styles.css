@@ -56,7 +56,8 @@ h2, .h2 {
     }
     .dropdown-item:hover, .dropdown-item:focus {
         color: var(--bs-nav-link-hover-color);
-      }
+        background-color: #fff;
+    }
 }
 
 /* desktop dropdown animations */
