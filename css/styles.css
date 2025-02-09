@@ -44,36 +44,53 @@ h2, .h2 {
     padding: 3rem 0;
 }
 
-.dropdown-menu {
-    padding: 0.3rem;
-    will-change: transform;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    display: block;
-    visibility: hidden;
-    pointer-events: none;
+@media (max-width: 991px){
+    .dropdown-item{
+        display: block;
+        padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+        font-size: var(--bs-nav-link-font-size);
+        font-weight: var(--bs-nav-link-font-weight);
+        color: var(--bs-nav-link-color);
+        text-decoration: none;
+        transition: color 0.15s ease-in-out !important;
+    }
+    .dropdown-item:hover, .dropdown-item:focus {
+        color: var(--bs-nav-link-hover-color);
+      }
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    transform: translateY(-15px);
-    visibility: visible;
-    pointer-events: auto;
+/* desktop dropdown animations */
+@media (min-width: 992px) {
+    .dropdown-menu {
+        padding: 0.3rem;
+        will-change: transform;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.35);
+        display: block;
+        visibility: hidden;
+    }
+    .nav-item.dropdown:hover .dropdown-menu {
+        opacity: 1;
+        transform: translateY(-15px);
+        visibility: visible;
+    }
+    
+    .nav-item.dropdown:not(:hover) .dropdown-menu {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+    
+    .dropdown-item{
+        padding: 0.8rem;
+        margin: 0.3rem;
+        border-radius: 1rem;
+    }
 }
 
-.nav-item.dropdown:not(:hover) .dropdown-menu {
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    pointer-events: none;
-}
 
-.dropdown-item{
-    padding: 0.8rem;
-    margin: 0.3rem;
-    border-radius: 1rem;
-}
 .card {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.2s ease-in-out;
