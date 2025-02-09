@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
   document.body.classList.add('loaded');
 });
 
-// Prevent dropdown clickability in desktop view
+// Prevent products page clickability in desktop view
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownToggle = document.querySelector('.dropdown-toggle');
 
