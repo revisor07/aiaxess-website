@@ -17,6 +17,7 @@
   from = "/art-gallery.html"
   to = "/products/art-gallery"
   status = 301
+  force=true
 
 [[redirects]]
   from = "/medical-offices.html"
