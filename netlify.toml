@@ -2,7 +2,8 @@
   from = "/property-management.html"
   to = "/products/property-management"
   status = 301
-  
+  force = true
+
 [[redirects]]
   from = "/index.html"
   to = "/"
@@ -28,8 +29,6 @@
   from = "/medical-offices.html"
   to = "/products/medical-offices"
   status = 301
-
-
 
 [[redirects]]
   from = "/about.html"
