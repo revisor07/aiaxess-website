@@ -50,7 +50,7 @@
   status = 301
 
 # Optional: Catch-all rule for other .html files (if any)
-[[redirects]]
-  from = "/*/*.html"
-  to = "/:splat"
-  status = 301
+#[[redirects]]
+#  from = "/*/*.html"
+#  to = "/:splat"
+#  status = 301
