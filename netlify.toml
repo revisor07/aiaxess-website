@@ -17,19 +17,16 @@
   from = "/art-gallery.html"
   to = "/products/art-gallery"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/medical-offices.html"
   to = "/products/medical-offices"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/property-management.html"
   to = "/products/property-management"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/about.html"
