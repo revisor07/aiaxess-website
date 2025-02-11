@@ -40,23 +40,20 @@
   from = "/article-1.html"
   to = "/publications/from-genai-novice-to-a-pro-a-non-techies-guide-for-enterprise-ai-integration"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/article-2.html"
   to = "/publications/practical-access-control-for-genai-part-i"
   status = 301
-  force = true
 
 
 [[redirects]]
   from = "/article-3.html"
   to = "/publications/practical-access-control-for-genai-part-ii"
   status = 301
-  force = true
 
 # Optional: Catch-all rule for other .html files (if any)
-#[[redirects]]
-#  from = "/*/*.html"
-#  to = "/:splat"
-#  status = 301
+[[redirects]]
+  from = "/*/*.html"
+  to = "/:splat"
+  status = 301
