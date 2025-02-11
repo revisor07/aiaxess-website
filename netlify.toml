@@ -1,10 +1,4 @@
 [[redirects]]
-  from = "/property-management.html"
-  to = "/products/property-management"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/index.html"
   to = "/"
   status = 301
@@ -23,11 +17,15 @@
   from = "/art-gallery.html"
   to = "/products/art-gallery"
   status = 301
-  force=true
 
 [[redirects]]
   from = "/medical-offices.html"
   to = "/products/medical-offices"
+  status = 301
+
+[[redirects]]
+  from = "/property-management.html"
+  to = "/products/property-management"
   status = 301
 
 [[redirects]]
@@ -51,8 +49,3 @@
   to = "/publications/practical-access-control-for-genai-part-ii"
   status = 301
 
-# Optional: Catch-all rule for other .html files (if any)
-[[redirects]]
-  from = "/*/*.html"
-  to = "/:splat"
-  status = 301
