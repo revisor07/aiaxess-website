@@ -1,49 +1,49 @@
 [[redirects]]
   from = "/index"
   to = "/"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "publications"
   to = "/publications"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "products"
   to = "/products"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "medical-offices"
   to = "/products/medical-offices"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "art-gallery"
   to = "/products/art-gallery"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "property-management"
   to = "/products/property-management"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "about"
   to = "/about"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "article-1"
   to = "/publications/from-genai-novice-to-a-pro-a-non-techies-guide-for-enterprise-ai-integration"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "article-2"
   to = "/publications/practical-access-control-for-genai-part-i"
-  status = 200
+  status = 301
 
 [[redirects]]
   from = "article-3"
   to = "/publications/practical-access-control-for-genai-part-ii"
-  status = 200
+  status = 301
