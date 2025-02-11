@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Unleash the full potential of generative AI solutions with our state-of-the-art Access Management Platform, your AI Access fabric. Navigate the AI revolution confidently and turn IT leaders into pioneers of your AI-driven business transformation." />
+  <title>AIAxess</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html">AIAxess</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="property-management.html">Property Management</a></li>
+              <li><a class="dropdown-item" href="art-gallery.html">Art Gallery</a></li>
+              <li><a class="dropdown-item" href="medical-offices.html">Medical Offices</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="title-section">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-10">
+          <h2 class="text-white mb-4" style="text-decoration: underline; line-height:3rem">Practical Access Control for
+            GenAI: Part I: Prompt and Output RBAC</h2>
+          <p class="text-white-50">
+            January 24, 2024
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container mb-5 mt-3 px-4 px-lg-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 ">
+          <h2>Why Focus on IAM for GenAI?</h2>
+
+          <p>AI systems are rapidly conquering modern enterprises, offering myriad benefits across various stakeholder
+            interactions. From customer-engaging chatbots to complex voice-enabled multimodal assistants, AI facilitates
+            quicker, more informed decision-making through advanced analytics and the distillation of siloed data into
+            structured, knowledge-based expert systems. Additionally, AI enhances productivity by automating routine
+            tasks, such as software code writing, and streamlining operations.</p>
+
+
+
+          <p>In cybersecurity, we are witnessing a tectonic shift from the castle-and-moat model to identity-based
+            zero-trust architecture. This shift is driven by the rise of cloud computing, mobile technologies, the
+            decentralization of IT resources and workforce, evolving cyber threats including insider threats, increased
+            regulatory compliance pressures, and the growing need for dynamic access control.</p>
+
+
+
+          <p>During the initial explorations of AI technology, companies realized the necessity to align AI deployments
+            with this evolving identity-first security landscape. Regulatory bodies and standard-setting agencies have
+            underscored this focus. For instance, NIST’s <a
+              href="https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf">AI Risk Management Framework</a>,
+            particularly in its section 4.4, emphasizes the criticality of IAM for AI systems: “<em>AI systems that can
+              maintain confidentiality, integrity, and availability through protection mechanisms that prevent
+              unauthorized access and use may be said to be secure.</em>” Similarly, the upcoming <a
+              href="https://www.linkedin.com/posts/dr-laura-caroli-0a96a8a_ai-act-consolidated-version-activity-7155181240751374336-B3Ym/">European
+              Union AI Act</a> contains stringent requirements for risk and quality management, data governance, and
+            logging, indirectly implying robust AIM controls for the AI systems.</p>
+
+
+
+          <p>Addressing the challenges of responsibly deploying AI in enterprises, co-author Yuriy Yuzifovich’s
+            publication, “<a
+              href="https://www.linkedin.com/pulse/from-genai-novice-pro-non-techies-guide-enterprise-ai-yuzifovich-fma8c/">From
+              GenAI Novice to a Pro: A Non-Techie’s Guide for Enterprise AI Integration</a>,” highlighted the
+            significance of comprehensive identity and access management within the broader RAG architecture. However,
+            detailed insights into these mechanisms were not provided. This article aims to bridge that gap by providing
+            a more detailed guidance for implementing Role-Based Access Control (RBAC) and Identity and Access
+            Management (IAM) controls in AI systems, discussing possibilities and outlining a general,
+            framework-agnostic approach to AI identity and access-related risk and security.</p>
+
+
+
+          <p>This Identity and Access management for the AI deployments series’ first installment will provide an RBAC
+            overview, delineate how its implementation differs from pre-GenAI industry norms, and explore the
+            integration of GenAI deployments with IAM systems.</p>
+
+
+
+          <p>In the forthcoming Part II, we will examine Retrieval Augmented Generation (RAG), using the responsible RAG
+            deployment architecture mentioned in the above <a
+              href="https://www.linkedin.com/pulse/from-genai-novice-pro-non-techies-guide-enterprise-ai-yuzifovich-fma8c/">article</a>
+            to describe how IAM systems intersect with broader RAG-based LLM enterprise deployments.</p>
+
+
+
+          <h2 class="wp-block-heading">Role Based Access Control</h2>
+          <p>RBAC is a method of regulating access to computer or network resources based on the individual roles of
+            users within an organization. It ensures that only authorized individuals can access specific resources,
+            performing only actions necessary for their roles. A simple illustration of RBAC implementation can be seen
+            in the healthcare industry. Initially, roles are defined: An Administrator has full access to all systems
+            and data; a Doctor can access patient health records, write prescriptions, and view test results; a Nurse
+            can view patient health records and test results but cannot write prescriptions; and a Receptionist can
+            access patient contact information and scheduling systems, but not health records. Next, Access Policies are
+            created to define what each role can see and do within the system. For instance, a policy for nurses might
+            allow read access to patient records, but not write access. Finally, when new employees join, they are
+            assigned a role based on their job – a new doctor receives the ‘Doctor’ role, along with the access
+            permissions defined for it. The benefit of RBAC is its conceptual simplicity: users don’t need to manage or
+            remember specific permissions as their role automatically determines their access. This facilitates changes
+            in user roles and enhances security and compliance. In the healthcare industry example, RBAC helps ensure
+            sensitive information, like patient health records, is only accessible by authorized personnel, aiding
+            compliance with laws like HIPAA. While RBAC is well understood in enterprise security, implementing it for
+            GenAI systems can, however, be challenging:</p>
+
+          <ol class="wp-block-list">
+            <li><strong>Fuzzy access</strong>: RBAC has been mostly designed as a binary (green/red) gatekeeper to a
+              resource. The interaction with an AI is anything but binary: it is the nuances of the interaction that can
+              be acceptable or not acceptable. We need to account for this diversity in interactions.</li>
+
+
+
+            <li><strong>Unstructured input:</strong> Input data for AI is typically unstructured; requests (prompts) are
+              usually formulated in natural language, unlike the highly structured API calls for microservices or
+              applications where identity-based policies are easier to implement.</li>
+
+
+
+            <li><strong>Free-form output:</strong> GenAI typically outputs a plain natural text that can contain any
+              information, code, and even structured data and unstructured text, or any combination of them. Developing
+              RBAC policies must account for these various outputs and their potential impact on system security.</li>
+
+
+
+            <li><strong>Monolithic model structure:</strong> AI models can be complex and monolithic, making it
+              difficult to segregate specific portions of knowledge and restrict access accordingly. Ensuring that AI
+              models can have granular access policies requires innovative thinking.</li>
+
+
+
+            <li><strong>AI extensibility</strong>: Advanced AI techniques like SoftPrompts and additional LoRA layers
+              can extend the functionality of existing AI models but also introduce new challenges when it comes to
+              managing access control. These factors should be addressed when an RBAC system is designed and
+              implemented.</li>
+          </ol>
+
+
+
+          <p>Having identified these challenges, let’s explore what RBAC policies for AI might look like, policies that
+            can safeguard the AI system while enabling efficient collaboration and decision-making. In this analysis, we
+            will describe possible solutions to the mismatch between classical binary RBAC permissions and GenAI
+            complexity, suggesting specific ways to secure both the input to and the output from the GenAI model. While
+            the AI models that belong to the class of GenAI can generate diverse content, including its language output,
+            audio, images, and even videos, we will focus on LLMs, Large LAnguage Models that generate natural language
+            output.</p>
+
+
+
+          <p>In this article we will not go into details of implementation of the RBAC system itself as there are a
+            variety of RBAC approaches as well as the existence of ABAC systems which perform the same function in a
+            different way. Here we use the term RBAC as a generic term describing an implementation of an Access Control
+            system regardless of its specific access model and architecture.</p>
+
+
+
+          <h2 class="wp-block-heading">What is AI Access?</h2>
+          <p></p>
+          <p>Unlike a typical API with multiple entry call URIs, an AI model is primarily accessed through a single API
+            call for all uses and users. Thus, AI access should be treated as data access to a data repository, where
+            the data is presented as a blob object, represented by the monolithic AI model. Since the model itself does
+            not provide granular access to the information it contains, the access level should be as restrictive as the
+            most sensitive data the model can return. For instance, if the model can theoretically return PII, then the
+            entire model should be treated as PII for access purposes, with strict controls in the access control system
+            to allow less privileged personnel to utilize the AI system effectively.</p>
+          <p>
+
+          </p>
+          <p>Having established the critical importance of access control to an AI system, we must determine who is
+            responsible for designing appropriate permissions and enforcing the entitlements for the model. While an
+            existing RBAC enterprise system can inform user permissions, it falls to the GenAI system to enforce these
+            permissions and provide contextual information to the RBAC system. Effective RBAC implementation usually
+            requires defining irreducible target system features or target objects for control purposes, which can be a
+            complex task for a GenAI system. The authors of this article draw on their experience in RBAC design and
+            implementation for OpenStack private cloud systems and public cloud services in large-scale, complex
+            AI-powered systems, and these recommendations stem from the challenges encountered in these implementations.
+          </p>
+          <p>
+
+          </p>
+          <p>Given the impracticality of deploying multiple models, each trained specifically for individual roles in
+            the RBAC system, access should not be binary. It should also consider additional variables that can
+            influence the model’s behavior, such as hyperparameters (with system prompts being the most significant),
+            and access to additional layers like LoRA (where one model can pair with various behavior-altering LoRA
+            layers). This necessity to securely share the same model among different users calls for an integrated,
+            holistic approach that incorporates inputs and outputs into the access policies, which we will explore in
+            the following sections.</p>
+          <p>
+
+          </p>
+          <p>In addition to the model’s inference use, RBAC policies should also encompass access to the raw data used
+            for training, the model’s structure, and training-related documentation. If accessed by low-privileged
+            users, this information could expose vulnerabilities in the training procedure. Furthermore, access to the
+            training set, particularly for fine-tuning the main or LoRA layer weights, could potentially lead to the
+            injection of a backdoor, as discussed in the article “<a
+              href="https://www.linkedin.com/pulse/manchurian-candidate-ai-reloaded-yuriy-yuzifovich-ktcjc/">Manchurian
+              Candidate: The AI Reloaded</a>.”</p>
+          <p>
+
+          </p>
+          <p>A notable example of LLM hyperparameters is ‘temperature.’ This parameter influences the AI model’s output
+            creativity: higher values yield more creative text, while lower values constrain randomness. This impacts
+            not only the surprise element in a single output but also the variability between model runs. Unrestricted
+            access to this hyperparameter can result in outputs that are either unpredictably creative or overly
+            constrained, potentially misaligned with corporate objectives. Hyperparameters are typically optimized
+            during the AI model’s closely supervised staging phase before full production deployment.</p>
+          <p>
+
+          </p>
+          <p>To ensure consistent security throughout the AI lifecycle, RBAC policies should integrate model
+            architecture information, training procedures and data, and logs with the access policies for inference use.
+            Adopting a data-centric approach in designing RBAC policies allows organizations to implement granular
+            policies while treating AI systems as a single entity throughout their life cycles.</p>
+          <p>
+
+          </p>
+          <p>To summarize, for RBAC purposes, the following model assets and resources can be defined:</p>
+          <p></p>
+          <p></p>
+          <ol>
+            <li><strong>LLM Model Weights:</strong> The trained parameters critical for the model’s operation.
+
+            </li>
+            <li><strong>LLM Hyperparameters:</strong> Settings like temperature, input context size, and output size,
+              influencing model behavior and output.</li>
+            <li>
+
+              <strong>Additional Layers:</strong> Layers like LoRA that modify or enhance processing capabilities.
+            </li>
+            <li>
+
+              <strong>Embedding Vectors, Databases, and Document Indexes:</strong> Essential for handling and accessing
+              data used and produced by the model.
+            </li>
+          </ol>
+          <p></p>
+          <p>Each role within the system will have specific permissions regarding these model assets, thereby ensuring
+            appropriate access and safeguarding against unauthorized usage. For example, a data scientist might be
+            granted access to modify hyperparameters, while a system administrator could be responsible for managing
+            access to the model weights or databases.</p>
+          <h2>What is AI Input and Can We Control It?</h2>
+          <p>LLM-based AI input, commonly referred to as a prompt, is a critical component of an AI system, as the AI
+            generates output based on this given input. Since LLM input typically consists of plain natural language
+            text, predicting the AI system’s output can be challenging. Not only does the output vary with different
+            prompts, but the model also generates distinct output for the same prompt. Instances have occurred where
+            seemingly innocuous inputs led to AI models leaking PII information, as highlighted by a Google’s DeepMind
+            researcher in their critique of OpenAI’s ChatGPT, titled “<a
+              href="https://arxiv.org/pdf/2311.17035.pdf">Scalable Extraction of Training Data from (Production)
+              Language Models</a>,” published in November 2023.<br>To enhance the likelihood of generating safe model
+            outputs, controlling the AI input is essential. We propose this can be achieved either by introducing rigid
+            scaffolding for the model input or by implementing intelligent checks on the prompt before the model
+            processes it.</p>
+          <h3>Approach 1: Template-Based Prompting</h3>
+          <p></p>
+          <p>In essence, the output of an LLM model is an extension of the input, or prompt. Therefore, one method to
+            constrain the model’s output to specific information and align it with RBAC roles is to standardize the
+            types of queries different user roles can pose to the model. Utilizing predefined prompt templates allows
+            organizations to carefully manage potential inputs to AI systems, reducing the risk of undesirable outputs.
+            This method also promotes consistency in AI responses across different users and contexts. Each standard
+            prompt, in a pre-GenAI era, becomes akin to an API call, with parameters inserted into the template for
+            specificity.</p>
+          <p>
+
+          </p>
+          <p>For example, a template designed to retrieve definitions from industrial machinery manuals could be:</p>
+          <p>
+
+          </p>
+          <p>What is a <em>&lt;term&gt;</em>?</p>
+          <p>
+
+          </p>
+          <p>There could be hundreds of these pre-built prompt templates. While the advantages of this approach are
+            clear, its risks and limitations are also evident:</p>
+          <p>
+
+          </p>
+          <ol class="wp-block-list">
+            <li><strong>Limited&nbsp;AI&nbsp;performance:&nbsp;</strong>Introducing a structured input format between
+              the unstructured nature of human queries and the AI’s processing limits the benefits of the deployed AI
+              model.&nbsp;</li>
+
+
+
+            <li><strong>Prompt Injection Risk: </strong>This risk is analogous to SQL injection in API calls. For
+              example, if a parameterized input lacks proper checks and sanitization, it could lead to template
+              manipulation, such as:</li>
+          </ol>
+          <p></p>
+          <p>&lt;term&gt; = “the Social Security Number for John Smith”</p>
+          <p>
+
+          </p>
+          <p>Resulting prompt:&nbsp;</p>
+          <p>
+
+          </p>
+          <p>What is the Social Security Number for John Smith?&nbsp;</p>
+          <p>
+
+          </p>
+          <p>This risk can be mitigated similarly to how Web Application Firewalls (WAFs) protect websites and databases
+            against SQL injection. We can conceptualize a “<strong>Prompt WAF</strong>” with features like:</p>
+          <p>
+
+          </p>
+          <ul class="wp-block-list">
+            <li>Parameter length restrictions to minimize risks with elaborate queries;</li>
+
+
+
+            <li>Limiting parameter values to specific formats (e.g., dates, names);</li>
+
+
+
+            <li>Restricting parameter values to a predefined set (e.g., allowing only recent quarters for time-related
+              queries).&nbsp;</li>
+          </ul>
+          <p></p>
+          <p>In some scenarios, UI elements can be used to limit parameter choices, constructing prompts from
+            user-selected values, possibly supplemented by limited free-form text inputs.</p>
+          <p>
+
+          </p>
+          <p>With each template stored in a database, RBAC policy implementation becomes straightforward: configure
+            specific prompts allowed for each role. By using prompt templates and enforcing strict limits on user
+            inputs, organizations can minimize the risk of unexpected AI outputs while still enabling creative
+            applications.</p>
+          <p>
+
+          </p>
+          <h3 class="wp-block-heading">Approach 2: Adding Intent Detection for Prompts</h3>
+          <p></p>
+          <p>The concept of a “Prompt WAF” introduced earlier can be expanded by incorporating a sophisticated prompt
+            analysis step before the prompt reaches the LLM. This “Advanced Prompt WAF,” potentially AI-powered, can
+            perform nuanced text analysis to identify threats typical of adversarial attacks on prompts.</p>
+          <p>
+
+          </p>
+          <p>An AI system trained specifically to recognize malicious intent, potential exploits, phishing queries, and
+            other attack strategies, can effectively counter threats that circumvent LLM safety training, produce
+            misaligned outputs, or expose confidential information, bypassing corporate policies.</p>
+          <p>
+
+          </p>
+          <p>In its most advanced form, the prompt verifier can classify prompts into multiple intent categories, linked
+            to specific policies. This eliminates the need for prompt templates while maintaining effective Prompt WAF
+            protection by identifying threats early in the process. Such a system could feature capabilities like:</p>
+          <p>
+
+          </p>
+          <ol class="wp-block-list">
+            <li><strong>Intent Detection: </strong>Implementing intent detection to identify harmful prompts, integrated
+              with RBAC policies, ensures access to appropriate prompts and queries.</li>
+
+
+
+            <li><strong>Contextual Awareness: </strong>Enhancing AI systems with contextual understanding improves their
+              ability to foresee unintended outcomes and safeguard against threats. Out-of-context queries and queries
+              exploiting hidden backdoors might be flagged as potentially malicious.</li>
+
+
+
+            <li><strong>Encoding Detection: </strong>Identifying encoded prompts helps detect hidden patterns signaling
+              deceptive or exploitative intents.</li>
+
+
+
+            <li><strong>Data-Centric Approach:</strong> A data-centric perspective in designing intent detection
+              mechanisms bolsters security while preserving system performance and user experience.</li>
+          </ol>
+          <p></p>
+          <p></p>
+          <p>By combining various forms of input control, these robust safeguards will fully unlock the benefits of AI
+            integration within corporate policies.</p>
+          <p>
+
+          </p>
+          <p>To summarize, RBAC control for GenAI input should be enforced for:</p>
+          <p>
+
+          </p>
+          <ol class="wp-block-list">
+            <li><strong>Prompt templates</strong>, if template-based prompts are utilized in the deployed LLM.</li>
+
+
+
+            <li><strong>Question classes and tags</strong>, in cases where a prompt input analysis/classification system
+              is operational.</li>
+
+
+
+            <li><strong>Specific parameter values</strong>, especially when templates with limited input parameters are
+              employed.</li>
+          </ol>
+          <p></p>
+          <p>A “Prompt WAF” approach is highly advisable, as prompts can be targets for potential attacks, as detailed
+            in “<a
+              href="https://www.linkedin.com/pulse/manchurian-candidate-ai-reloaded-yuriy-yuzifovich-ktcjc/">Manchurian
+              Candidate: The AI Reloaded</a>.” While input control does not guarantee safe output, it adds a critical
+            layer of protection. This is akin to modern cybersecurity defenses designed to counter breaches in one or
+            more layers of protection, ensuring a robust defense system.</p>
+          <h2>Last Line of Defense: AI Output</h2>
+          <p></p>
+          <p>Controlling the output of AI systems, or any sensitive system, is crucial in ensuring the security of
+            sensitive information. Content detection mechanisms can be deployed to analyze AI system outputs, flagging
+            any potentially harmful or sensitive content. This is especially important for AI systems, given the
+            unpredictable nature of LLM-generated outputs. These detection mechanisms, operated by a separate system,
+            should integrate with RBAC policies to ensure that users only receive safe and appropriate information from
+            AI systems. Output policies also ensure that the outputs align with the AI system’s objectives, even when
+            the system is compromised.</p>
+          <p>
+
+          </p>
+          <ol class="wp-block-list">
+            <li><strong>Output Analysis:</strong> Implementing content detection mechanisms in AI systems enables
+              scanning of their outputs for sensitive information, like PII, or prohibited content, and tag it
+              accordingly. This process can be automated using advanced natural language processing techniques and can
+              range from complex separate LLMs to simpler methods like regex (for detecting phone numbers or emails).
+            </li>
+
+
+
+            <li><strong>Tagging:</strong> AI-based output control systems can leverage predefined tags or categories to
+              identify the nature of their outputs. Tags can be assigned for prohibited content, such as Not Safe For
+              Work (NSFW) material or hate speech, sentiment analysis, and classifying data sensitivity levels.
+              Integrating these tags into RBAC policies allows control over the type and scope of information returned
+              by an AI system.&nbsp;</li>
+
+
+
+            <li><strong>Anomaly Detection:</strong> Unusual output or language can indicate tampering with the model,
+              its weights, or hyperparameters. Monitoring for output anomalies ensures continuous alignment in a
+              deployed AI system. Statistical fingerprinting of LLM model output is an emerging area that would allow
+              for independent, continuous verification that the model remains unchanged.</li>
+          </ol>
+          <p></p>
+          <p>By combining content detection mechanisms with RBAC policies, organizations can safeguard against
+            unintended AI outputs while still harnessing the benefits of AI integration.</p>
+          <h2>Conclusion</h2>
+          <p></p>
+          <p>Identity and access management (IAM) is pivotal in protecting companies from cyber threats, both internal
+            and external. The deployment of enterprise GenAI systems, particularly those based on Large Language Models,
+            should conceptually align with this. However, GenAI differs from traditional IT systems in numerous ways,
+            and secure enterprise deployment best practices are still evolving.</p>
+          <p>
+
+          </p>
+          <p>As discussed in this article, effective GenAI RBAC requires a deep understanding of AI system architecture
+            and precise identification and definition of target features and objects accessible by AI users, governed
+            individually with entitlements. AI system architectures vary, influenced by specific use cases, and are
+            rapidly evolving. Compliance requirements also differ across industries, and constructing RBAC for an AI
+            system should involve input from governance professionals knowledgeable in data privacy and AI governance.
+            This is why we focused on distilling concepts and identifying critical components of AI systems for a broad
+            range of implementations and scenarios, rather than detailing a specific RBAC implementation.</p>
+          <p>
+
+          </p>
+          <p>This article laid the foundational principles for implementing RBAC and IAM for language-based foundational
+            models. The next installment will explore the more complex scenario of LLM deployment with Retrieval
+            Augmented Generation (RAG), combining the text generation capabilities of LLMs with external data storage,
+            presenting unique challenges and opportunities for adversaries and deployment teams.</p>
+          <p>
+
+          </p>
+          <h2 class="wp-block-heading">References:</h2>
+          <p></p>
+          <p>1. <a href="https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf">National Institute of Standards and
+              Technology (NIST). (2023). “Artificial Intelligence Risk Management Framework (AI RMF 1.0),” NIST AI
+              100-1</a>.</p>
+          <p>
+
+          </p>
+          <p>2. <a
+              href="https://www.linkedin.com/pulse/manchurian-candidate-ai-reloaded-yuriy-yuzifovich-ktcjc/">Yuzifovich,
+              Yuriy. (2024). “Manchurian Candidate: The AI Reloaded.”</a> LinkedIn Newsletter “AI Meets The Business
+            World.”</p>
+          <p>
+
+          </p>
+          <p>3. <a
+              href="https://www.linkedin.com/pulse/from-genai-novice-pro-non-techies-guide-enterprise-ai-yuzifovich-fma8c/">Yuzifovich,
+              Yuriy. (2023). “From GenAI Novice to a Pro: A Non-Techie’s Guide for Enterprise AI Integration.”</a>
+            LinkedIn Newsletter “AI Meets The Business World.”</p>
+          <p>
+
+          </p>
+          <p>4. <a
+              href="https://www.linkedin.com/posts/dr-laura-caroli-0a96a8a_ai-act-consolidated-version-activity-7155181240751374336-B3Ym/">Caroli,
+              Laura. European Union Artificial Intelligence Act /consolidated version/</a>.</p>
+          <p>
+
+          </p>
+          <p>5. Nasr, M. et al. (2023). Scalable Extraction of Training Data from (Production) Language Models.
+            arXiv:2311.17035v1 [cs.LG]. Available at: <a
+              href="https://arxiv.org/abs/2311.17035">https://arxiv.org/abs/2311.17035</a></p>
+          <p></p>
+          <p></p>
+          <p></p>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; AIAxess 2025</div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

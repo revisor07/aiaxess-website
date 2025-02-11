@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Unleash the full potential of generative AI solutions with our state-of-the-art Access Management Platform, your AI Access fabric. Navigate the AI revolution confidently and turn IT leaders into pioneers of your AI-driven business transformation." />
+  <title>AIAxess</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html">AIAxess</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="property-management.html">Property Management</a></li>
+              <li><a class="dropdown-item" href="art-gallery.html">Art Gallery</a></li>
+              <li><a class="dropdown-item" href="medical-offices.html">Medical Offices</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="title-section">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-10">
+          <h2 class="text-white mb-4" style="text-decoration: underline; line-height:3rem">Practical Access Control for GenAI: Part II : Introducing RaAG: Retrieval and access Augmented Generation</h2>
+          <p class="text-white-50">
+            February 13, 2024
+          </p>
+        </div>
+      </div>
+      <!-- <img class="img-fluid" src="assets/img/ipad.png" alt="..." /> -->
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container mb-5 mt-3 px-4 px-lg-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 ">
+          <h1><span style="font-weight: 400;">Introduction</span></h1>
+          <p><span style="font-weight: 400;">The progress of AI is accelerating at an exponential pace. Enterprises that
+              are quick to reinvent themselves with AI technologies will not just survive but will flourish; those that
+              tread cautiously are at risk of sinking into obscurity. This is the driving force behind our “Practical
+              Access Control for GenAI” series. In the first introductory part, “</span><a
+              href="https://www.linkedin.com/pulse/practical-access-control-genai-yuriy-yuzifovich-ybcmc/"><span
+                style="font-weight: 400;">Part I: Prompt and Output RBAC</span></a><span style="font-weight: 400;">,” we
+              laid down the groundwork for enterprises eager to adopt AI swiftly. Continuing with this momentum, our
+              second installment dives deeper into the access control architecture of the most widely adopted enterprise
+              AI framework—Retrieval Augmented Generation (RAG). For those less versed in technical jargon, I recommend
+              beginning with the introductory piece, “</span><a
+              href="https://www.linkedin.com/pulse/from-genai-novice-pro-non-techies-guide-enterprise-ai-yuzifovich-fma8c/"><span
+                style="font-weight: 400;">From GenAI Novice to a Pro: A Non-Techie's Guide for Enterprise AI
+                Integration</span></a><span style="font-weight: 400;">,” before moving forward.&nbsp;&nbsp;&nbsp;</span>
+          </p>
+          <p><span style="font-weight: 400;">&nbsp;</span><span style="font-weight: 400;">Enterprises are embracing a
+              new generation of AI. Generative AI technology has enabled previously impossible use scenarios, ranging
+              from intelligent, non-keyword searches in documents and summarization to editing assistance and beyond.
+              However, the evolution of AI technology does not stop at these initial applications. We are rapidly
+              advancing towards AI assistants capable of performing intricate tasks that require sophisticated behavior
+              with ease. Imagine an AI assistant capable of exploring online resources, synthesizing a report complete
+              with summaries of relevant sources, integrating this with data and information from internal enterprise
+              systems, and presenting it all—both qualitatively and quantitatively, including infographics—in just
+              minutes rather than the weeks it might take a human. The potential productivity gains could allow
+              employees to focus on what truly matters: enhancing the quality of service and products for their
+              customers and ensuring that customer service is more professional and swift than ever before.</span></p>
+          <p><span style="font-weight: 400;">With these imminent capabilities just around the corner, the question
+              arises: How can we enable such capabilities in a manner that ensures AI assistants have the proper access
+              rights, adhere to data governance rules, and allow enterprises to leverage the exponential benefits of
+              productivity growth with minimal or controlled risks? This article will tackle this challenge, exploring
+              how Retrieval-Augmented Generation can be turned into </span><b>Retrieval and access Augmented Generation
+              (RaAG)</b><span style="font-weight: 400;">, coincidentally paying tribute to the classical Indian
+              framework for musical composition and improvisation.</span></p>
+          <p><span style="font-weight: 400;">To recap, Retrieval-Augmented Generation is essentially a method that
+              allows Language Learning Models (LLMs) to access external data not included in the model during training.
+              This separation of data from the model addresses several issues simultaneously: it enables more granular
+              data control and governance, allows for the use of standard LLMs without the need for costly retraining on
+              corporate data, and provides the model access to real-time data. However, implementing nuanced access and
+              data control is crucial for companies to continue deriving value from their AI investments while
+              satisfying the needs of other stakeholders.</span></p>
+          <h1><span style="font-weight: 400;">RAG: Access Challenges</span></h1>
+          <h3><span style="font-weight: 400;">Retrieval-Augmented Generation Overview</span></h3>
+          <p><span style="font-weight: 400;">Generative AI can be used not only for reasoning and general text
+              generation but also for processing and utilizing data stores and digital documents to produce more
+              detailed or fact-based outputs. According to researchers who conducted a survey on Retrieval-Augmented
+              Generation for Language Learning Models (LLMs) (the paper can be accessed </span><a
+              href="https://arxiv.org/pdf/2312.10997v1.pdf"><span style="font-weight: 400;">here</span></a><span
+              style="font-weight: 400;">), LLMs are inherently prone to hallucinations, maintain too compressed version
+              of the training data to be precise, and offer poor observability regarding how they arrive at their
+              answers.</span></p>
+          <p><span style="font-weight: 400;">By combining the language capabilities of LLMs with the precision of
+              external knowledge sources, we can transform LLMs into powerful tools for data extraction and analysis.
+              This is precisely what RAG (Retrieval-Augmented Generation) accomplishes: it enables access to document
+              repositories, internal and external APIs, data stores, and web search engines to retrieve factual
+              information, thus producing fact-based LLM outputs with appropriate references.</span></p>
+          <p><span style="font-weight: 400;">Existing implementations of document retrieval range from naive to more
+              advanced versions. A naive document retrieval approach involves splitting the document into chunks and
+              indexing each chunk individually. The search process then entails encoding the user inquiry into a vector
+              of numbers and searching for similar vectors among all the document chunks. While this simplified approach
+              is useful, it suffers from several issues such as lower recall (not all relevant documents are found) and
+              lower precision (some documents found are not relevant to the query). This is partly due to the document
+              being split into chunks without regard to its internal structure, indexing at the same granularity level,
+              and the absence of a quality assurance mechanism for the search results.</span></p>
+          <p><span style="font-weight: 400;">More advanced versions of document retrieval address these issues by
+              introducing reranking (carefully reviewing the returned results to double-check their relevance), and
+              employing better chunking methods that consider the internal structure of the documents. They also create
+              summaries at various granularity levels to better respond to queries. Furthermore, these versions
+              incorporate multi-step retrievals, caching, persistent memory, reinforcement learning for continuous
+              improvement, and user personalization. In addition to intelligent search, recent experiments have shown
+              that the quality of the overall retrieval system improves when traditional keyword-based search is
+              combined with semantic search. This ensures that search queries looking for a specific term are processed
+              more effectively at the reranking stage.</span></p>
+          <p><span style="font-weight: 400;">There are several implementations of the RAG LLM architecture, both
+              open-source and proprietary. The most well-known open-source implementations include </span><a
+              href="https://www.llamaindex.ai/"><span style="font-weight: 400;">LlamaIndex</span></a><span
+              style="font-weight: 400;"> and </span><a href="https://www.langchain.com/"><span
+                style="font-weight: 400;">LangChain</span></a><span style="font-weight: 400;">. In RAG, pipelines can be
+              constructed to process the initial user prompt into the final result. These pipelines can become
+              sophisticated, consisting of multiple </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;">—automated and specialized decision-makers powered by LLMs. </span><i><span
+                style="font-weight: 400;">Agents</span></i><span style="font-weight: 400;"> can take an arbitrary number
+              of steps to complete a given task, dynamically deciding on the best course of action rather than strictly
+              following a predetermined list of steps. They can be based on dynamically changing or static chains of
+              evolving prompts. </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;"> interact with the world through a set of </span><i><span
+                style="font-weight: 400;">Tools</span></i><span style="font-weight: 400;">, which can range from a
+              simple calculator to elaborate data retrievals and ETL manipulations. The </span><i><span
+                style="font-weight: 400;">Readers</span></i><span style="font-weight: 400;"> and </span><i><span
+                style="font-weight: 400;">Retrievers</span></i><span style="font-weight: 400;"> are highly specialized
+              connectors to external data, such as external document stores, which can be used within processing
+              sequences. This external information, retrieved from external storage, “augments” AI to create retrieval
+              augmentation, injecting the ground truth into the creativity and reasoning of GenAI. One of many possible
+              RAG architectures may look as follows:</span></p>
+          <p><img class="img-fluid"
+              src="assets/img/article-3/post-ai-access-part2-image-1.webp" alt=""></p>
+          <p><span style="font-weight: 400;">The architecture can include a diverse combination of </span><i><span
+                style="font-weight: 400;">Agents</span></i><span style="font-weight: 400;">, </span><i><span
+                style="font-weight: 400;">Tools</span></i><span style="font-weight: 400;">, and </span><i><span
+                style="font-weight: 400;">Readers/Retrievers</span></i><span style="font-weight: 400;">: an
+            </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> can also serve as
+              an interface for other LLM models or entire LLM-based frameworks. For instance, LlamaIndex can be accessed
+              within LangChain as an </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;">. This complexity and the opacity of data flows and external data connectivity
+              present challenges for security and data governance. Although many resources on the web describe evolving
+              best practices for RAG architectures from a technological standpoint, we have not found an in-depth
+              discussion on the security aspects, particularly regarding access and data governance. In this article, we
+              aim to address this gap, with a particular emphasis on access controls.</span></p>
+          <h3><span style="font-weight: 400;">Agent Authentication and Authorization: Problem Definition</span></h3>
+          <p><span style="font-weight: 400;">In my conversations with companies developing RAG solutions, I am always
+              surprised by how little attention is paid to security. Sometimes, it feels like pushing for a new frontier
+              in a Wild West style. The most frequent response to my inquiries about security is, “We will give all
+              agents the same privileges as the user asking the question,” making all enterprise systems believe it is a
+              user who searches in enterprise data repositories and document stores. However, this approach is deeply
+              flawed for various reasons, from the inability to correctly log interactions between the user and data
+              stores to the impossibility of creating intelligent access control anomaly detection systems. This is
+              because an agent's behavior is profoundly different from a human's behavior, and their access patterns
+              differ. A different approach is necessary.</span></p>
+          <p><span style="font-weight: 400;">Regulators around the world have also noticed the problem. Both </span><a
+              href="https://artificialintelligenceact.eu/the-act/"><span style="font-weight: 400;">EU AI
+                Act</span></a><span style="font-weight: 400;"> and </span><a
+              href="https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"><span
+                style="font-weight: 400;">US AI executive order</span></a><span style="font-weight: 400;"> place a
+              strong emphasis on traceability and monitoring of AI systems. This should include access logs to trace who
+              interacted with the AI system, how these interactions occurred, and whether they complied with the
+              governance and security policies of the company. All existing enterprise systems employ sophisticated
+              access control systems, and AI systems should be no exception.</span></p>
+          <h3><span style="font-weight: 400;">RaAG: Sketching an Outline</span></h3>
+          <p><span style="font-weight: 400;">To design better access controls for our </span><i><span
+                style="font-weight: 400;">Retrieval and access Augmented Generation (RaAG)</span></i><span
+              style="font-weight: 400;"> pipelines, we will assume that the AI system is accessed through an API.
+              Although many users will use a chat-based user interface, this UI will, in turn, utilize an AI-powered API
+              backend. Thus, we can concentrate on the API when designing our access controls.</span></p>
+          <p><span style="font-weight: 400;">An AI-enabled system accessible via API should be integrated with an
+              Identity and Access Management (IAM) system, specifically with an identity provider (IdP), which
+              authenticates users wanting to use this API, and an authorization service once the user is authenticated.
+              It is important to note that the IAM system does not directly enforce any policy. Instead, it acts as a
+              centralized identity information store, an authentication provider, and a policy repository, as
+              follows:</span></p>
+              <p><img class="img-fluid"
+                src="assets/img/article-3/post-ai-access-part2-image-2.webp" alt=""></p>
+          <p><span style="font-weight: 400;">This diagram does not show policy enforcement, an element of the
+              infrastructure that actually prevents unauthorized access. This is because policy enforcement should
+              either be part of the AI system itself or be integrated with it. In either case—whether through direct
+              policy enforcement within the system or integration with an external policy enforcement mechanism—this
+              enforcement should be incorporated into the </span><i><span
+                style="font-weight: 400;">Readers</span></i><span style="font-weight: 400;">, </span><i><span
+                style="font-weight: 400;">Retrievers</span></i><span style="font-weight: 400;">, </span><i><span
+                style="font-weight: 400;">Tools</span></i><span style="font-weight: 400;">, and </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> code.</span></p>
+          <p><span style="font-weight: 400;">In our AI system configuration, users interact with the API, the entry
+              point to the entire system, through queries. To highlight the challenge we face in designing an access
+              control system for our AI, we need to recall how permissions have traditionally been designed for pre-AI,
+              classical APIs.</span></p>
+          <p><span style="font-weight: 400;">A classic API typically offers multiple methods for different actions,
+              providing a convenient way to install access permission guardrails at each entry point. For instance, in
+              the standard CRUD API interface, each CRUD operation—</span><b><i>C</i></b><i><span
+                style="font-weight: 400;">reate</span></i><span style="font-weight: 400;">,
+            </span><b><i>R</i></b><i><span style="font-weight: 400;">ead</span></i><span style="font-weight: 400;">,
+            </span><b><i>U</i></b><i><span style="font-weight: 400;">pdate</span></i><span style="font-weight: 400;">,
+              and </span><b><i>D</i></b><i><span style="font-weight: 400;">elete</span></i><span
+              style="font-weight: 400;">—has separate calls with their own HTTP Methods and URIs. A URI can define the
+              object for which a method is called. For example, in the URI
+            </span><b><i>/v1/myImportantDocuments/files</i></b><span style="font-weight: 400;">, access can be managed
+              with two permissions: </span><b><i>Read</i></b> <span style="font-weight: 400;">and
+            </span><b><i>Write</i></b><span style="font-weight: 400;">. </span><i><span
+                style="font-weight: 400;">Create</span></i><span style="font-weight: 400;">, </span><i><span
+                style="font-weight: 400;">Update</span></i><span style="font-weight: 400;">, and </span><i><span
+                style="font-weight: 400;">Delete</span></i><span style="font-weight: 400;"> API calls will require the
+              user to have </span><b><i>Write</i></b> <span style="font-weight: 400;">permission, while a
+            </span><i><span style="font-weight: 400;">Read</span></i><span style="font-weight: 400;"> call will require
+            </span><b><i>Read</i></b> <span style="font-weight: 400;">permission. One can implement more granular
+              permission schemes, such as allowing updates to an object but not its creation, or requiring special
+            </span><b><i>Delete</i></b> <span style="font-weight: 400;">permission to remove an object.</span></p>
+          <p><span style="font-weight: 400;">Now, introduce an AI system. Defining a permission schema suddenly becomes
+              much harder, a challenge we discussed in our </span><a
+              href="https://www.linkedin.com/pulse/practical-access-control-genai-yuriy-yuzifovich-ybcmc/"><span
+                style="font-weight: 400;">Part I: Prompt and Output RBAC</span></a><span style="font-weight: 400;">
+              article. This is because, if the same CRUD actions are implemented in our AI system, the entry point for a
+              user remains the same—the natural language query—making it no longer possible to easily differentiate the
+              user's intent by applying controls to different API calls, as was the case with classic data
+              access.</span></p>
+          <p><span style="font-weight: 400;">For retrieval-augmented generation-based systems, access control becomes
+              even more challenging. Readers and Agents access various internal data sources, sometimes generating SQL
+              queries or even writing and executing code to obtain a result. These are just a few use cases,
+              highlighting the sprawling complexity of data access beneath the surface of a seemingly simple RAG
+              system's text-based entry point (adapted from Jerry Liu's </span><a
+              href="https://docs.google.com/presentation/d/14b5gkRh6zFc4Q-h1JOBYQOPfDu6aURTKmP9hbyjWVF4/edit#slide=id.p"><span
+                style="font-weight: 400;">presentation</span></a><span style="font-weight: 400;">):</span></p>
+                <p><img class="img-fluid"
+                  src="assets/img/article-3/post-ai-access-part2-image-3.webp" alt=""></p>
+          <p><span style="font-weight: 400;">We need an access system architecture that accounts for the complex nature
+              of RAG internals.</span></p>
+          <h3><span style="font-weight: 400;">Following Control Plane Practices for Distributed Systems</span></h3>
+          <p><span style="font-weight: 400;">Before we delve into the details of permissions and authorization for our
+              RaAG-based AI system, let's first tackle the topic of authentication. There are at least two approaches to
+              identity handling in service architecture. The first is the pass-through approach, where services, upon
+              authenticating the user and confirming the user's validity who is about to use the service, utilize the
+              user's information to perform operations or access other services. The second approach involves a two-step
+              process: upon authenticating the user to validate their authenticity, the service uses its own identity to
+              connect to other services. In real-world scenarios, especially within zero-trust architectures, both user
+              account information and service account information can be combined to validate both the user and the
+              service, especially if multiple services are communicating with each other. This is not unlike sending a
+              human agent to pick up an important package from your friend: your friend should verify the credentials of
+              the agent, but also confirm that the agent is acting on your behalf.</span></p>
+          <p><span style="font-weight: 400;">It is a sound security practice to ensure all services/clients are
+              authenticated. One common method is to use TLS mutual authentication, where both the server and the client
+              exchange certificates, which each side can verify against a known CA (Certificate Authority) certificate.
+              There are more advanced methods for client/server authentication, such as the open-source standard
+            </span><a href="https://spiffe.io/"><span style="font-weight: 400;">SPIFFE</span></a><span
+              style="font-weight: 400;"> (Secure Production Identity Framework for Everyone) and its open-source
+              implementation called </span><a href="https://github.com/spiffe/spire"><span
+                style="font-weight: 400;">SPIRE</span></a><span style="font-weight: 400;">.</span></p>
+          <p><span style="font-weight: 400;">Having </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;"> and </span><i><span style="font-weight: 400;">Tools</span></i><span
+              style="font-weight: 400;"> authenticated helps to secure the overall system, but it does not address the
+              issue of original user authentication and authorization. Since user authentication occurs only once at the
+              API call, which serves as the entry point to the AI system, it is crucial for the AI system to propagate
+              identity information to all its subsystems (</span><i><span
+                style="font-weight: 400;">Agents</span></i><span style="font-weight: 400;">, </span><i><span
+                style="font-weight: 400;">Tools</span></i><span style="font-weight: 400;">, and </span><i><span
+                style="font-weight: 400;">Readers</span></i><span style="font-weight: 400;">/</span><i><span
+                style="font-weight: 400;">Retrievers</span></i><span style="font-weight: 400;">). While the AI system
+              can extend this identity information to other services it interacts with, it's not uncommon for some
+              systems to utilize different authentication mechanisms or rely on service authentication data instead.
+              This raises the question: When, and by whom, is this authorization validation performed? It might be
+              assumed that databases or document stores have authorization verification capabilities, but these services
+              may not be able to identify the original user who initiated the query.</span></p>
+          <p><span style="font-weight: 400;">Now that we have established the need to relay the original user's
+              identity, we must decide on the granularity level of enforcement. Let's start with a simpler approach:
+              certain users will only be allowed to use specific </span><i><span style="font-weight: 400;">Agents,
+                Readers</span></i><span style="font-weight: 400;">,</span><i><span style="font-weight: 400;">
+                Retrievers</span></i><span style="font-weight: 400;">, and </span><i><span
+                style="font-weight: 400;">Tools</span></i><span style="font-weight: 400;">. In the case of an
+            </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> in this
+              simplified architecture, an entire </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;">, with its full functionality, would either be accessible to a user or not,
+              depending on the user's role. While some enterprises might be satisfied with this approach, others will
+              not. For those seeking more nuanced control, we will then explore a more detailed, ABAC (Attribute-Based
+              Access Control)-based architecture.</span></p>
+          <h3><span style="font-weight: 400;">RaAG Access Control: Agent-Level Granularity</span></h3>
+          <p><span style="font-weight: 400;">The rationale for agent-level access control is as follows: we understand
+              which data is utilized by each </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;"> (at least, we are aware of the documents indexed or the data stored in
+              databases) and the required access level. Consequently, we can assign the same access level to the agent
+              itself and perform the access check and enforcement at the agent level when it is invoked prior to
+              fulfilling a task. This process can be managed with a standard RBAC (Role-Based Access Control), where
+              users are assigned specific roles and permissions to utilize a particular agent. If the user's identity is
+              known to the AI system, it can be passed to its </span><i><span
+                style="font-weight: 400;">Agents</span></i><span style="font-weight: 400;">, who can then verify the
+              user's permissions in relation to the </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;">' roles and proceed or reject the request appropriately. The access control
+              architecture takes this shape:</span></p>
+              <p><img class="img-fluid"
+                src="assets/img/article-3/post-ai-access-part2-image-4.webp" alt=""></p>
+          <p><span style="font-weight: 400;">The actual implementation of this approach varies based on customer
+              requirements and the technology stack employed. A straightforward implementation might leverage the OAuth2
+              protocol and open-source identity provider servers that support OAuth2 or OpenID. OAuth2 and OpenID
+              facilitate the use of </span><a
+              href="https://developers.google.com/identity/protocols/oauth2/scopes"><span
+                style="font-weight: 400;">scopes</span></a><span style="font-weight: 400;"> as a means to define user
+              access rights simply, without requiring additional storage for Roles. For instance, the Google API
+              controls which APIs an application can access based on user identity using scopes. OAuth does not
+              prescribe specific values for scopes, as this is highly dependent on the service's internal architecture
+              and requirements.</span></p>
+          <p><span style="font-weight: 400;">Google API Scopes, according to Google, might look as follows:</span></p>
+          <p><img class="img-fluid"
+            src="assets/img/article-3/post-ai-access-part2-image-5.webp" alt=""></p>
+          <p><span style="font-weight: 400;">More sophisticated implementations may employ other authentication
+              protocols like SAML or Kerberos and separate Role and Permission storages like LDAP or Microsoft
+              AD.</span></p>
+          <p><span style="font-weight: 400;">On the </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;"> side, the authorization check can be as straightforward as code that examines a
+              simple file listing roles and their permissions. This enables the </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> to verify user roles against
+              the file's contents. Alternatively, </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;"> may consult external decision services to determine user access. Having
+              centralized storage for permissions and roles facilitates security management control, whereas local
+              file-based access control does not require any additional services and could serve as an effective initial
+              step on the roadmap to securing AI systems.</span></p>
+          <h3><span style="font-weight: 400;">Going More Granular: ABAC Context-Aware Permissions</span></h3>
+          <p><span style="font-weight: 400;">The RBAC (Role-Based Access Control) approach discussed in the previous
+              section effectively enables user authentication and authorization, meeting typical enterprise
+              requirements, facilitating relatively rapid development, and importantly, being relatively simple to set
+              up. However, when applied to RAG, several drawbacks of the RBAC approach should be considered before
+              implementing access controls:</span></p>
+          <ol>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">The number of roles and
+                permission structures tends to grow quickly with the increasing complexity of the environment, posing
+                real challenges in managing roles and permissions and determining the effective permissions a user has
+                at any given time.</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">The granularity of access
+                linked to user roles can be problematic in companies with data storage containing information of varying
+                privilege levels, whether annotated or not. When documents of mixed access levels are stored in a single
+                repository, or a database contains tables of varied sensitivity, this binary access with authorization
+                at the </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> or
+              </span><i><span style="font-weight: 400;">Retriever</span></i><span style="font-weight: 400;"> level to
+                the entire storage prevents the implementation of the “</span><i><span style="font-weight: 400;">least
+                  required permission</span></i><span style="font-weight: 400;">” approach.</span></li>
+          </ol>
+          <p><span style="font-weight: 400;">These issues can be addressed with Attribute-Based Access Control (ABAC).
+              Access decisions in ABAC are made based on the attributes of the user, the objects, and the context,
+              allowing for the creation of more granular access controls based on various attributes available at the
+              time of the access decision-making process. As the decision relies on dynamic information (attributes)
+              rather than solely on static roles, it employs more sophisticated mechanisms for access decisions. Often,
+              ABAC uses policy engines to determine whether to grant access to a resource. These policy engines utilize
+              special languages to define different policies that analyze available information and make decisions based
+              on this information. Several proprietary implementations of policy engines exist, alongside open-source
+              solutions. </span><a href="https://www.openpolicyagent.org/"><span style="font-weight: 400;">OpenPolicy
+                Agent</span></a><span style="font-weight: 400;"> is an open-source policy engine that supports local
+              policy evaluation (running as part of the code) and a server-based configuration, allowing remote clients
+              to supply contextual information and receive an access decision from the server.</span></p>
+          <p><span style="font-weight: 400;">With ABAC and policies, it is possible to create a highly flexible and
+              fine-grained access control system for the information processed and generated by </span><i><span
+                style="font-weight: 400;">AI Agents</span></i><span style="font-weight: 400;">. These policies can be
+              employed both to check if a user can use an </span><i><span style="font-weight: 400;">AI
+                Agent</span></i><span style="font-weight: 400;"> before the </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> accepts the task for
+              execution and to verify if the retrieved document (both before its retrieval and to double-check its
+              content's safety per the policy after its retrieval) or the processed data can be relayed to a
+              user.</span></p>
+          <p><span style="font-weight: 400;">This approach is undoubtedly more complex in terms of setup and
+              implementation but offers valuable benefits for corporate policies, security, and compliance through
+              fine-grained access control at the data level. It allows for defining policies that can control what data
+              the enterprise AI can process for a particular user, with acceptable implementation complexity and minimal
+              additional data storage or processing costs. The architecture of the fine-grained ABAC access controls for
+              RAG-enabled AI can be as follows:</span></p>
+              <p><img class="img-fluid"
+                src="assets/img/article-3/post-ai-access-part2-image-6.webp" alt=""></p>
+          <p><span style="font-weight: 400;">For this solution to be effective, several requirements need to be
+              implemented:</span></p>
+          <ol>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">All data must have metadata,
+                which can be stored alongside the data itself or dynamically provided by the middleware data and
+                context-aware semantic layer.</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Policies should be written to
+                cover specific data and user attributes (metadata), and default policies should be carefully crafted to
+                expose sensitive documents only to users with the appropriate elevated privileges.</span></li>
+            <li style="font-weight: 400;" aria-level="1"><i><span style="font-weight: 400;">Agents'</span></i><span
+                style="font-weight: 400;"> code should include both entrance policy enforcement components and output
+                policy enforcement components.</span></li>
+          </ol>
+          <h3><span style="font-weight: 400;">RaAG Reference Architecture: AI Agent Entry Point Policy
+              Enforcement</span></h3>
+          <p><span style="font-weight: 400;">Let's imagine we were called to assist in implementing generative AI based
+              on the RAG architecture within the financial management division of an investment bank, which advises
+              customers on financial strategy. In its quest for operational excellence, the division decided to employ
+              generative AI to significantly enhance the volume of financial analysis performed by its personnel and to
+              reduce the latency of these analyses conducted by financial analysts.</span></p>
+          <p><span style="font-weight: 400;">Financial advisors will utilize the RAG-based generative AI system to
+              obtain relevant financial and analytical data. This will aid them in analyzing their customers' finances
+              and investments and making recommendations. The AI system will employ several tools to gather recent
+              updates on the overall financial markets, collect stock market analyses, and acquire publicly available
+              financial predictions from analysts. Additionally, the AI will have access to tools for retrieving private
+              customer portfolio information and targeted financial goals.</span></p>
+          <p><span style="font-weight: 400;">Given that the bank employs thousands of employees in this division, we aim
+              to ensure that only financial advisors have access to customer data. As the company operates in various
+              countries, each with its distinct privacy laws, we also intend to ensure that only advisors within the
+              same country can access documents related to that country, thereby preventing unauthorized cross-border
+              data flows.</span></p>
+          <p><span style="font-weight: 400;">Let's explore how we can configure access and output policies using the
+              OpenPolicy Agent (OPA) for this hypothetical scenario. The authors implemented a simplified architecture
+              based on OPA, so all policy snippets below were tested in our sandbox environment, simulating a large
+              financial institution. We will assume the server mode is utilized, wherein </span><i><span
+                style="font-weight: 400;">Agents</span></i><span style="font-weight: 400;"> send policy query requests
+              with context information contained within the HTTP request body formatted as JSON messages.</span></p>
+          <p><span style="font-weight: 400;">The OPA policy language offers flexibility in retrieving identity
+              information, supporting various sources from access tokens, X.509 public key infrastructure certificates,
+              to HTTP headers, and the body of any arbitrary structure, and more. For the sake of simplicity, we'll
+              assume that the information is transmitted in the request body. The request content comprises arbitrary
+              JSON data containing various details about the user, the object to be accessed, and the overall context.
+              The JSON schema should be consistent, as the policy needs to discern where to extract the data for making
+              a decision.</span></p>
+          <p><span style="font-weight: 400;">The first policy enforcement action requires an </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> to verify whether a user is
+              authorized to access information that the </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;"> is designed to provide. Below is an example of a request body sent to the OPA
+              server by the </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;">
+              to determine if a user is permitted to use this </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;">:</span></p>
+          <p><b>[ Agent ]</b><span style="font-weight: 400;"> &nbsp; —–(</span><i><span
+                style="font-weight: 400;">Pre-auth request</span></i><span style="font-weight: 400;">)—-&gt; </span><b>[
+              OPA Server ]</b></p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">{</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"user"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"john.doe"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"first_name"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"John"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"last_name"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Doe"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"location"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"zone"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"EU"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"country"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Belgium"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"roles"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Advisor"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Analyst"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"agent"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Finance Data Agent"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"max_datfa_level"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">4</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"data_type"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"financial"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"restrictions"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"GDPR"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"system"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"AI Enabled Financial Analysis Assistant"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"location"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"zone"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"EU"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"country"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Belgium"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;">}</span></pre>
+          <p><span style="font-weight: 400;">Let's assume the corresponding access policy is as follows:</span></p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">package </span><span style="font-weight: 400;">system.authz</span>
+          <span style="font-weight: 400;">import </span><span style="font-weight: 400;">rego.v1</span>
+          <span style="font-weight: 400;">allowed_roles </span><span style="font-weight: 400;">:=</span><span style="font-weight: 400;"> [</span><span style="font-weight: 400;">"Financial_Advisor"</span><span style="font-weight: 400;">]</span>
+          <span style="font-weight: 400;">default </span><span style="font-weight: 400;">allow </span><span style="font-weight: 400;">:=</span> <span style="font-weight: 400;">false</span>
+          <span style="font-weight: 400;">hasRole</span><span style="font-weight: 400;"> contains </span><span style="font-weight: 400;">role</span><span style="font-weight: 400;"> if </span><span style="font-weight: 400;">{&nbsp;</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;#Check if user has a role which is in the allowed list</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;some </span><span style="font-weight: 400;">role</span><span style="font-weight: 400;"> in </span><span style="font-weight: 400;">input.user.roles</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;role</span><span style="font-weight: 400;"> in </span><span style="font-weight: 400;">allowed_roles</span>
+          <span style="font-weight: 400;">}</span>
+          <span style="font-weight: 400;">same_location</span><span style="font-weight: 400;">&nbsp; if </span><span style="font-weight: 400;">{</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;#Check if user in the same location as AI service</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;input.user.location.zone </span><span style="font-weight: 400;">==</span><span style="font-weight: 400;"> input.system.location.zone&nbsp;</span>
+          <span style="font-weight: 400;">}</span>
+          <span style="font-weight: 400;">allow </span><span style="font-weight: 400;">:=</span><span style="font-weight: 400;"> {</span><span style="font-weight: 400;">"allowed"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span><span style="font-weight: 400;">}</span><span style="font-weight: 400;"> if </span><span style="font-weight: 400;">{&nbsp;</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;#Allow if in the same location and role found in allowed_roles</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;hasRole</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;same_location</span>
+          <span style="font-weight: 400;">}</span><span style="font-weight: 400;"> else </span><span style="font-weight: 400;">:=</span><span style="font-weight: 400;"> {</span><span style="font-weight: 400;">"allowed"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">false</span><span style="font-weight: 400;">, </span><span style="font-weight: 400;">"reason"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Insufficient role or location mismatch."</span><span style="font-weight: 400;">}
+          
+          </span></pre>
+          <p><span style="font-weight: 400;">After evaluating the </span><i><span
+                style="font-weight: 400;">Agent's</span></i><span style="font-weight: 400;"> request with the above
+              policy, the OPA service generates a response. Although we crafted the request and policy manually, the
+              response below is an actual JSON output generated by our deployed OPA service:</span></p>
+          <p><b>[ Agent ]</b><span style="font-weight: 400;"> &nbsp; &lt;—–(</span><i><span
+                style="font-weight: 400;">Pre-auth </span></i><span style="font-weight: 400;">r</span><i><span
+                style="font-weight: 400;">esponse</span></i><span style="font-weight: 400;">)—– </span><b>[ OPA Server
+              ]</b></p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">[</span>
+          <span style="font-weight: 400;"> &nbsp;[</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;{</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"allow"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"allowed"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"allowed_roles"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Advisor"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"hasRole"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Advisor"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"same_location"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;"> &nbsp;]</span>
+          <span style="font-weight: 400;">]
+          </span></pre>
+          <p><span style="font-weight: 400;">The Agent can then use the decision from the OPA server to either allow the
+              AI query to proceed or deny it. In our scenario, the OPA server authorized access to the financial
+              information. This simple example illustrates how policy rules can specify granular access based not only
+              on user roles but also on the attributes of the service, the data, and the relevant user attributes. Such
+              policies can be crafted to cover more complex cases by checking additional information, such as the time,
+              the user's precise geolocation-related information, or even the result of the machine-to-machine (m2m)
+              consultation with the Intrusion Detection/Threat Analysis System to assess the risk level or any potential
+              threats associated with this request.</span></p>
+          <h3><span style="font-weight: 400;">Defense in Depth: Agent Output Policy Enforcement</span></h3>
+          <p><span style="font-weight: 400;">Output access controls present an even more compelling use case, as they
+              allow control over which documents the </span><i><span style="font-weight: 400;">Agent</span></i><span
+              style="font-weight: 400;"> returns after processing the request, based on user attributes. Once the
+            </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> verifies that the
+              user is permitted to use the information and understands the nature of the requested data, it will carry
+              out its retrieval function and any necessary ETL, structured, or generative transformations. Then, a
+              second policy enforcement action is undertaken to check if the document's content (metadata) is
+              permissible for the user. This step is crucial because the content may differ from what the
+            </span><i><span style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> expected. Such
+              discrepancies could arise if the data store is misconfigured or has implementation issues, resulting in
+              the return of financial data not intended for the original requester.</span></p>
+          <p><span style="font-weight: 400;">Here is an example of an agent request to the OPA server to check if a
+              document is permissible to be relayed to the user:</span></p>
+          <p><b>[ Agent ]</b><span style="font-weight: 400;"> &nbsp; —–(</span><i><span
+                style="font-weight: 400;">Release request + Metadata</span></i><span style="font-weight: 400;">)—-&gt;
+            </span><b>[ OPA Server ]&nbsp;</b></p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">{</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"user"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"john.doe"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"first_name"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"John"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"last_name"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Doe"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"location"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"zone"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"EU"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"country"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Belgium"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"roles"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Advisor"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"Financial_Analyst"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"isEmployee"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"access_level"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"confidential"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"agent"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Finance Data Agent"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"max_data_level"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">4</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"data_type"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"financial"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"restrictions"</span><span style="font-weight: 400;">: [</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"GDPR"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"system"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"id"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"AI Enabled Financial Analysis Assistant"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"location"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"zone"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"EU"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"country"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"Belgium"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;},</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"document"</span><span style="font-weight: 400;">: {</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"classification"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"GDPR protected"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"resource_level"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">"confidential"</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"tags"</span><span style="font-weight: 400;"> : [</span><span style="font-weight: 400;">"financial data"</span><span style="font-weight: 400;">, </span><span style="font-weight: 400;">"personal data"</span><span style="font-weight: 400;">]</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;">}</span></pre>
+          <p><span style="font-weight: 400;">In this example, we assume the </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> was able to collect metadata
+              for the document it retrieved and included it as part of the contextual information for the OpenPolicy
+              Agent to make a decision. This metadata could be stored alongside the document itself or generated
+              on-the-fly by an additional AI model that tags the document based on text analysis. A particularly
+              valuable application of this dynamic tagging is to prevent the inadvertent retrieval of information
+              belonging to a different customer or a document from the same customer but with a higher privacy setting,
+              outside a particular analyst's access privileges. This could occur if a document was mistakenly tagged
+              when entered into the system, either accidentally or by an adversarial insider, and the AI classifier is
+              sophisticated enough to classify it correctly.</span></p>
+          <p><span style="font-weight: 400;">Here is the policy that will allow the output document to be relayed only
+              if the user's access level matches the document's level and the user is from a specific location:</span>
+          </p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">package </span><span style="font-weight: 400;">system.authz</span>
+          <span style="font-weight: 400;">import </span><span style="font-weight: 400;">rego.v1</span>
+          <span style="font-weight: 400;">default </span><span style="font-weight: 400;">allow </span><span style="font-weight: 400;">:=</span> <span style="font-weight: 400;">false</span>
+          <span style="font-weight: 400;">eu_employee</span><span style="font-weight: 400;"> if </span><span style="font-weight: 400;">{ </span><span style="font-weight: 400;">#Check if user is EU employee</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;input.user.location.zone </span><span style="font-weight: 400;">==</span> <span style="font-weight: 400;">"EU"</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;input.user.isEmployee</span>
+          <span style="font-weight: 400;">}</span>
+          <span style="font-weight: 400;">user_document_level_match</span><span style="font-weight: 400;"> if </span><span style="font-weight: 400;">{ </span><span style="font-weight: 400;">#Check if a document level is the same as a user level</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;input.document.resource_level </span><span style="font-weight: 400;">==</span><span style="font-weight: 400;"> input.user.access_level</span>
+          <span style="font-weight: 400;">}</span>
+          <span style="font-weight: 400;">allow</span><span style="font-weight: 400;">&nbsp; if </span><span style="font-weight: 400;">{ </span><span style="font-weight: 400;">#Allow if EU employee with matched document level and a document is GDPR protected</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;eu_employee</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;user_document_level_match</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;input.document.classification </span><span style="font-weight: 400;">==</span> <span style="font-weight: 400;">"GDPR protected"</span>
+          <span style="font-weight: 400;">}</span>
+          <span style="font-weight: 400;">allow</span><span style="font-weight: 400;"> if </span><span style="font-weight: 400;">{ </span><span style="font-weight: 400;">#Allow if EU employee and unrestricted document</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;eu_employee</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;input.document.resource_level </span><span style="font-weight: 400;">==</span> <span style="font-weight: 400;">"unrestricted"</span>
+          <span style="font-weight: 400;">}</span></pre>
+          <p><span style="font-weight: 400;">The OPA server can then respond to the </span><i><span
+                style="font-weight: 400;">Agent</span></i><span style="font-weight: 400;"> with the policy evaluation
+              results and the following decision (once again, this is the actual response generated by our
+              deployment):</span></p>
+          <p><b>[ Agent ]</b><span style="font-weight: 400;"> &nbsp; &lt;—–(</span><i><span
+                style="font-weight: 400;">Release </span></i><span style="font-weight: 400;">r</span><i><span
+                style="font-weight: 400;">esponse</span></i><span style="font-weight: 400;">)—– </span><b>[ OPA Server
+              ]</b><span style="font-weight: 400;">&nbsp;</span></p>
+          <pre style="padding-left: 40px;"><span style="font-weight: 400;">[</span>
+          <span style="font-weight: 400;"> &nbsp;[</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;{</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"allow"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"eu_employee"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span><span style="font-weight: 400;">,</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: 400;">"user_document_level_match"</span><span style="font-weight: 400;">: </span><span style="font-weight: 400;">true</span>
+          <span style="font-weight: 400;"> &nbsp;&nbsp;&nbsp;}</span>
+          <span style="font-weight: 400;"> &nbsp;]</span>
+          <span style="font-weight: 400;">]</span></pre>
+          <p><span style="font-weight: 400;">Employing a policy engine enables flexible document access while
+              maintaining a relatively straightforward retrieval process. This strategy ensures that users can access
+              multiple document stores with the assurance that only the documents they are authorized to see will be
+              retrieved.</span></p>
+          <h1><span style="font-weight: 400;">Conclusion</span></h1>
+          <p><span style="font-weight: 400;">In light of our exploration into transforming Retrieval-Augmented
+              Generation into Retrieval and Access Augmented Generation (RaAG), we've delved deep into the complex yet
+              crucial world of securing AI architectures. The implementation, deployment, configuration, and testing of
+              AI with a RaAG architecture present intricate challenges, particularly in ensuring that use cases are
+              satisfactorily met without compromising security. As highlighted at the outset, the transition towards
+              retrieval-augmented generation not only seeks to enhance productivity growth within enterprises but also
+              emphasizes the importance of integrating robust access controls and adhering to data governance rules from
+              the ground up.</span></p>
+          <p><span style="font-weight: 400;">Security within AI systems, much like in the broader domain of IT, should
+              never be relegated to an afterthought. The early days of operating systems and software security serve as
+              a cautionary tale, reminding us of the perennial risks of insufficient security measures. In the
+              enterprise environment, deploying AI systems without seamless integration with established enterprise
+              security frameworks is unacceptable. At a fundamental level, this security architecture should encompass
+              an Identity Management provider, a Role and Permission provider, and a Policy Engine, all within the
+              Attribute-Based Access Control (ABAC) framework detailed in this article.</span></p>
+          <p><span style="font-weight: 400;">Given the ubiquity of Access and Identity Management (AIM) solutions in
+              most enterprises, we decided to base our reference architecture on open-source technologies to demonstrate
+              that enterprise-grade AI security does not necessarily require expensive, closed-source tools. This
+              approach not only secures the most advanced RAG-based GenAI deployments but also aligns with the broader
+              goal of achieving unparalleled access and data security. Here is an example of a security-enabled AI
+              system based on readily available open-source products that one can use right now:</span></p>
+              <p><img class="img-fluid"
+                src="assets/img/article-3/post-ai-access-part2-image-7.webp" alt=""></p>
+          <p><span style="font-weight: 400;">While Role-Based Access Control (RBAC) may set a foundational baseline for
+              security within enterprise AI systems, it falls short in offering the nuanced granularity required for
+              data access by </span><i><span style="font-weight: 400;">Agents</span></i><span
+              style="font-weight: 400;">. Despite the additional efforts and investments required to define access
+              policies and generate metadata for effective decision-making, the ABAC approach promises unparalleled
+              flexibility in controlling access at an individual document level. The dynamic and non-deterministic
+              nature of AI-enabled systems imposes the requirement of advanced access control. For enterprises
+              navigating the complexities of sophisticated AI deployments, adopting ABAC is not just recommended; it's
+              imperative for ensuring that the harmonious potential of enterprise AI is fully realized with our RaAG
+              architecture, safeguarding the symphony of data and access within the enterprise.</span></p>
+          <h1><span style="font-weight: 400;">References</span></h1>
+          <ol>
+            <li style="font-weight: 400;" aria-level="1"><a href="https://arxiv.org/pdf/2312.10997v1.pdf"><span
+                  style="font-weight: 400;">Retrieval-Augmented Generation for Large Language Models: A
+                  Survey</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://docs.llamaindex.ai/en/stable/optimizing/building_rag_from_scratch.html"><span
+                  style="font-weight: 400;">Building RAG from Scratch (Lower-Level)</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://python.langchain.com/docs/expression_language/cookbook/retrieval"><span
+                  style="font-weight: 400;">Langchain: RAG</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://spiffe.io/docs/latest/spiffe-about/overview/"><span style="font-weight: 400;">SPIFFE
+                  Overview: An overview of the SPIFFE specification</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://developers.google.com/identity/protocols/oauth2/scopes"><span
+                  style="font-weight: 400;">OAuth 2.0 Scopes for Google APIs</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a href="https://www.openpolicyagent.org/"><span
+                  style="font-weight: 400;">Open Policy Agent: Policy-based control for cloud native
+                  environments</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://docs.google.com/presentation/d/14b5gkRh6zFc4Q-h1JOBYQOPfDu6aURTKmP9hbyjWVF4/edit#slide=id.p"><span
+                  style="font-weight: 400;">Beyond Naive RAG: Adding Agentic Layers</span></a><span
+                style="font-weight: 400;"> by Jerry Liu, LlamaIndex co-founder/CEO</span></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://www.linkedin.com/pulse/practical-access-control-genai-yuriy-yuzifovich-ybcmc/"><span
+                  style="font-weight: 400;">Practical Access Control for GenAI. Part I: Prompt and Output
+                  RBAC</span></a></li>
+            <li style="font-weight: 400;" aria-level="1"><a
+                href="https://www.linkedin.com/pulse/from-genai-novice-pro-non-techies-guide-enterprise-ai-yuzifovich-fma8c/"><span
+                  style="font-weight: 400;">From GenAI Novice to a Pro: A Non-Techie's Guide for Enterprise AI
+                  Integration</span></a></li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; AIAxess 2025</div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Unleash the full potential of generative AI solutions with our state-of-the-art Access Management Platform, your AI Access fabric. Navigate the AI revolution confidently and turn IT leaders into pioneers of your AI-driven business transformation." />
+  <title>AIAxess</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html">AIAxess</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="property-management.html">Property Management</a></li>
+              <li><a class="dropdown-item" href="art-gallery.html">Art Gallery</a></li>
+              <li><a class="dropdown-item" href="medical-offices.html">Medical Offices</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="title-section">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-10">
+          <h2 class="text-white mb-4" style="text-decoration: underline; line-height:3rem">From GenAI Novice to a Pro: A Non-Techie's Guide for Enterprise AI Integration</h2>
+          <p class="text-white-50">
+            December 1, 2023
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-light">
+    <div class="container mb-5 mt-3 px-4 px-lg-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 ">
+          <h2 id="ember1531" class="ember-view">A new kid on the block</h2>
+          <p id="ember1532" class="ember-view reader-content-blocks__paragraph">As a manager, you've struck gold in the
+            labor market: a new recruit has just joined your division. This individual is not only quick and
+            enthusiastic about work but also significantly contributes to the company's bottom line, provided he has
+            ample access to necessary information. Despite these admirable traits, he exhibits the typical signs of
+            inexperience. He's opinionated, always ready to lend a hand, but lacks the restraint to temper his words and
+            actions. Occasionally, his unconventional views might even ruffle a few feathers. This is his first foray
+            into the corporate world, a realm filled with compliance requirements he knows nothing about. Yet, his
+            ability to sift through mountains of data, extracting and contextualizing relevant information—a task that
+            would take days for even the most skilled personnel—is nothing short of remarkable. He can also devise a
+            multi-step action plan for complex tasks and verify the results along the entire process, culminating in a
+            flawless report or conclusion, showing a remarkable level of expertise for his inexperience that often
+            surpasses expectations.</p>
+          <p id="ember1533" class="ember-view reader-content-blocks__paragraph">Your initial instinct might be to play
+            it safe, to shy away from leveraging this exceptional talent, sticking to the time-tested methods that have
+            served you for years. But whispers in the industry speak of a groundbreaking university program, one that
+            shapes such raw, extraordinary talent into graduates of unparalleled capability. And your competitors, it
+            seems, are already on board. This presents a conundrum: Can you harness the unique skills of this individual
+            to bolster your division's performance, all while navigating the pitfalls of his corporate naivety? Is it
+            possible to craft a synthetic employee who retains the essence of creativity and productivity but is also
+            safeguarded against the risks his inexperience brings?</p>
+          <p id="ember1534" class="ember-view reader-content-blocks__paragraph">This scenario isn't just hypothetical.
+            The 'inexperienced employee' in question is, in fact, an AI system — the latest innovation from your AI
+            vendor. It's designed to unearth hidden treasures within your corporate data silos, accelerating
+            time-to-market and sharpening the competitive edge of your products. In this article, I will navigate you
+            through various steps to harness this AI's potential effectively, ensuring you can unlock its value while
+            mitigating any adverse consequences.</p>
+          <h3 id="ember1535" class="ember-view">A naive implementation</h3>
+          <p id="ember1536" class="ember-view reader-content-blocks__paragraph">Why not completely outsource your search
+            needs? The market is growing with SaaS solutions, sprouting rapidly like mushrooms after a rain in the Fall.
+            These platforms promise that soon, every task involving information retrieval and analysis will be
+            effortlessly managed by powerful cloud-hosted AI models. However, the recent upheaval at OpenAI has
+            validated your initial reservations about relying on foundational models under external control. Opting for
+            a more hands-on approach, you decide to experiment with a locally-deployed language model. This model,
+            rooted in open-source for enhanced transparency and control, is tailored with augmented retrieval
+            capabilities to tap into your corporate data repository. You select a vendor for this project. For
+            continuity in our metaphor, let's name this AI 'Todd' and explore the challenges that emerge as you begin
+            weaving this AI into the fabric of your technology and business processes. Our naive GenAI enterprise
+            deployment might look like this:</p>
+            <p><img class="img-fluid"
+              src="assets/img/article-1/post-new-kid-image-2.webp" alt=""></p>
+          <h3 id="ember1538" class="ember-view">Adding access to corporate data stores</h3>
+          <p id="ember1539" class="ember-view reader-content-blocks__paragraph">In its naive form, this rudimentary
+            system offers limited value to the enterprise, primarily correcting grammar in marketing materials. While
+            Todd is trained on various data and knowledge domains, he does not have the knowledge specific to your
+            business. To elevate Todd's utility and enable him to respond to queries based on the corporate data, he
+            must gain access to databases, APIs, and document repositories. Todd, with his remarkable creativity and
+            near-flawless written language capabilities - he might even write software code - has a notable Achilles'
+            heel: he is abysmally weak in mathematics, executing software code, and interacting with external systems
+            such as databases and APIs.</p>
+          <p id="ember1540" class="ember-view reader-content-blocks__paragraph">To compensate for these limitations,
+            Todd needs support in navigating a complex corporate data landscape, as well as identifying relevant
+            documents. Enter Berta and Agent Smith. Berta is an expert in mathematics, coding, and encoding, adept at
+            transforming extensive text into lengthy numerical sequences known as 'embeddings.' Her expertise lies in
+            utilizing these numbers, rather than words, for document comparisons and matching numerical representations
+            of queries to the most relevant data. She brings a level of precision to information search that deftly
+            handles its inherent uncertainties and ambiguities. Berta acts as the bridge between Todd's decisions to
+            search for documents and the actual document repository, similar to an exemplary legal researcher skilled at
+            uncovering relevant case precedents.</p>
+          <p id="ember1541" class="ember-view reader-content-blocks__paragraph">Embeddings are crucial for accessing
+            unstructured data, which typically includes documents and files. However, unstructured data can also reside
+            in NoSQL databases. Developers employ various methods to transform arbitrary text into embeddings, with BERT
+            (Bidirectional Encoder Representations from Transformers) being one of many open source and proprietary
+            techniques. These advanced methods have the benefit of working with general text snippets. The document
+            summaries, or embeddings, are usually stored in a vector database - a specialized database designed not just
+            to store sequences of numbers but, more critically, to compute the 'distance' between any two such
+            sequences. To understand the necessity for this type of database, consider a scenario involving geographical
+            coordinates. Let's say Alice has known coordinates and seeks the nearest restaurant, each of which also has
+            its coordinates. A simple search by longitude or latitude won't suffice; we need to calculate the actual
+            distance using geometry, rank the restaurants accordingly, and then Alice can choose from the nearest ones
+            after considering reviews:</p>
+            <p><img class="img-fluid"
+              src="assets/img/article-1/post-new-kid-image-3.webp" alt=""></p>
+          <p id="ember1543" class="ember-view reader-content-blocks__paragraph">Now, imagine that instead of two
+            coordinates, each point has thousands, and we can't search by any single coordinate but must use them all to
+            calculate distances. Traditional SQL databases aren't cut out for this kind of search. This brings us to an
+            important question: do you have the budget for a commercial vector database, or the resources to deploy,
+            configure, and maintain an open-source alternative?</p>
+          <p id="ember1544" class="ember-view reader-content-blocks__paragraph">The AI solution provider you've chosen
+            may have implemented a trained document embedding model. However, there's no guarantee that it's been
+            optimized for the specific types of documents your company handles. These documents might be
+            semi-structured, with certain keywords or sections bearing more significance for search relevancy. Preparing
+            this data to align with the AI's standard processing requirements could demand additional, sometimes
+            substantial, time. For any augmented retrieval system to be effective, I recommend devising a series of test
+            queries for the system, along with the 'ideal' responses it should generate. This allows you to
+            quantitatively assess the accuracy of the system, categorizing results as perfect, acceptable, or
+            unacceptable.</p>
+          <p id="ember1545" class="ember-view reader-content-blocks__paragraph">Agent Smith, in stark contrast to the
+            more imaginative and creative Todd and Berta, is all about precision and efficiency. He specializes in
+            executing highly specific tasks, seamlessly accessing corporate data stores, and running code and other
+            commands with a methodical and deterministic approach. Todd, who is not equipped to directly interact with
+            external applications, relies on Agent Smith to execute his commands. Whether Todd needs to delve into
+            database information, or even initiate an API call to fetch data from a service, Agent Smith is his go-to
+            executor. With Agent Smith's skill set, Todd, or his designated coding ally, can formulate API calls with
+            precision, and construct SQL queries for direct database engagement. They can even create fully functional
+            Python code snippets, similar to the capabilities seen in the latest chatGPT, designed for execution in a
+            secure, sandboxed environment. These snippets are capable of performing complex mathematical calculations,
+            much like humans employing calculators or Excel for basic arithmetic.</p>
+          <p id="ember1546" class="ember-view reader-content-blocks__paragraph">Tasked with diverse assignments, Agent
+            Smith is akin to a multifaceted digital assistant. He meticulously executes Todd's commands, acting as a
+            crucial link to the corporation's digital assets and even external resources through APIs and web services.
+            Picture a team of Agent Smiths, reminiscent of the 'Matrix' movie, yet here they function as compliant
+            workers executing individual tasks. These agents are not limited to information retrieval; they can act on
+            specific instructions, paralleling how <a class="app-aware-link "
+              href="https://www.linkedin.com/pulse/hal-9000-eu-artificial-intelligence-act-yuriy-yuzifovich/"
+              target="_self" rel="noopener" data-test-app-aware-link="">HAL-9000 controlled the onboard hardware of
+              Discovery One</a> (though let's aim for a more benign outcome with your AI implementation):</p>
+              <p><img class="img-fluid"
+                src="assets/img/article-1/post-new-kid-image-4.webp" alt=""></p>
+          <p>By adding RAG (Retrieval-Augmented Generation) capabilities with access to the corporate digital assets by
+            'employing' Berta and a team of Agent Smiths (highlighted in green), you dramatically add the value your new
+            employee, Todd, brings to your company:</p>
+            <p><img class="img-fluid"
+              src="assets/img/article-1/post-new-kid-image-5.webp" alt=""></p>
+          <h3 id="ember1550" class="ember-view">Adding security: Identity and Access Management</h3>
+          <p id="ember1551" class="ember-view reader-content-blocks__paragraph">Now that Todd, with Berta's assistance,
+            has the capability to search and respond to queries using the accumulated knowledge in the corporate data
+            stores, it's time to implement proper data governance controls. A critical question arises: Who is
+            authorized to pose queries to Todd? Considering Todd's access to an extensive array of corporate
+            information, it's plausible that some employees might attempt to exploit his naivety to access data they are
+            not entitled to under corporate policies. To address this, you must integrate your newly hired talented team
+            with enterprise IAM (Identity and Access Management) controls. This integration ensures that each query
+            posed to Todd is cross-referenced with the user's data access rights, as already enforced at various data
+            store levels - including documents, databases, data lakes, and APIs. Such a measure guarantees the
+            preservation of data lineage through the AI 'black box', preventing the AI from morphing into a data
+            equivalent of an 'opaque financial haven', often utilized in money laundering schemes to obfuscate money
+            trails.</p>
+          <p id="ember1552" class="ember-view reader-content-blocks__paragraph">However, controlling access to
+            information is just one piece of the puzzle. You also need to establish a comprehensive data access trail
+            for compliance and investigative purposes. This calls for the implementation of detailed activity journaling
+            (logging). The log should capture a variety of information: the identity of the user, the timestamp of
+            access, the network location of the request, the user's initial prompts, and the internal prompts generated
+            by the AI incorporating the externally retrieved information. Additionally, the data store itself should
+            maintain its own log, recording the identity of the querying user, the timestamp, the AI's request, and the
+            information provided in response - either the content itself for brief data or a hash of the document for
+            longer content. This meticulous logging process ensures that the final information relayed to the user is
+            traceable, secure, and compliant.</p>
+          <p id="ember1553" class="ember-view reader-content-blocks__paragraph">Adding identity awareness to Todd makes
+            it possible to store the conversation contexts for individual users, so that humans can see their
+            interaction log with Todd, and for Todd to refresh his memory before answering a follow-up question (this
+            “memory” is called “context window” in GenAI technical speak).</p>
+          <h3 id="ember1554" class="ember-view">More security: User Behaviour Analytics</h3>
+          <p id="ember1555" class="ember-view reader-content-blocks__paragraph">What happens if a user's identity and
+            entitlements are authentic, but a malicious actor gains access to the AI through this valid identity, posing
+            sensitive queries? Recall that Todd, our AI system, is programmed to dutifully respond to any question.
+            However, Todd lacks the capability to remember each employee's interaction style or detect abrupt changes in
+            their behavior. Is there a way to externally augment Todd with this user sensitivity?</p>
+          <p id="ember1556" class="ember-view reader-content-blocks__paragraph">Fortunately, the answer is yes, you can.
+            You can enhance the AI-enabled infrastructure with a layer of detection using User Behaviour Analytics
+            (UBA). For companies that transcended basic identity and access management and implemented advanced
+            identity-centric intelligence - often referred to as IAI (Identity and Access Intelligence) - a UBA module
+            is likely already in place. This module plays a pivotal role in identifying potential unauthorized access
+            issues. UBA can be applied to both Todd's user interactions and Todd himself, monitoring for anomalies in
+            access patterns. While changes in user behavior might be legitimate, such as a new task assignment or a
+            shift in company role, they can also signal suspicious activities. A basic UBA system would track variations
+            in the types of questions employees ask Todd and changes in the data output (both content and volume), with
+            heightened alertness to Personally Identifiable Information (PII). This security layer might not outright
+            prevent unauthorized access, but it will certainly enhance visibility into the AI system's operation. It
+            also paves the way for the AI system to obtain future compliance certifications.</p>
+          <p id="ember1557" class="ember-view reader-content-blocks__paragraph">By integrating Todd with identity and
+            access management, prompt and conversation history logging, and user behavior analytics, you undoubtedly
+            increase the deployment's complexity. However, this complexity is a small price to pay for a system that
+            grows increasingly robust and secure:</p>
+            <p><img class="img-fluid"
+              src="assets/img/article-1/post-new-kid-image-6.webp" alt=""></p>
+          <h3 id="ember1559" class="ember-view">Even more security: controlling for AI behavioral risks</h3>
+          <p id="ember1560" class="ember-view reader-content-blocks__paragraph">While the current setup is functional,
+            it can be further improved with robust risk management practices. Just as human performance can be
+            influenced by external events and mood swings, as Todd's manager, you need to be cognizant of certain risks
+            associated with him as an advanced AI. Todd's performance may fluctuate due to three key factors, each with
+            its own set of risks and mitigation strategies: the inherently unpredictable nature of his output, the risk
+            of a covert replacement by another entity, and the potential alteration of his 'personality' under 'negative
+            influences'.</p>
+          <p id="ember1561" class="ember-view reader-content-blocks__paragraph">The non-deterministic nature of language
+            models is intrinsic to their technology. At any given point, the model selects the most probable next word
+            from several options, each with varying likelihoods. This is why two consecutive runs of the model rarely
+            produce identical responses, and in some cases, the model may even 'hallucinate'. It is hard to spot
+            hallucination because the model confidently creates references, URLs, paper titles and authors that look
+            legit, even when they are made up.</p>
+          <p id="ember1562" class="ember-view reader-content-blocks__paragraph">Occasionally, even a seemingly simple
+            query can elicit unpredictable responses from the AI, particularly when the user's request is unfulfillable.
+            <a class="app-aware-link "
+              href="https://news.yahoo.com/a-silly-attack-made-chatgpt-reveal-real-phone-numbers-and-email-addresses-200546649.html"
+              target="_self" rel="noopener" data-test-app-aware-link="">A recent incident of PII leakage from a
+              model</a> underscores this critical vulnerability: GenAI systems may not know when to cease output
+            generation or how to appropriately respond to novel requests. This incident also highlighted the risks
+            associated with using PII in training datasets. Even in cases where the AI doesn't leak sensitive
+            information, it can still generate unreliable or factually incorrect responses. For example, this summer, <a
+              class="app-aware-link "
+              href="https://www.reuters.com/legal/new-york-lawyers-sanctioned-using-fake-chatgpt-cases-legal-brief-2023-06-22/"
+              target="_self" rel="noopener" data-test-app-aware-link="">two New York lawyers faced sanctions from a U.S.
+              judge</a> for submitting a legal brief containing six fictitious cases, accidentally included as part of
+            an AI-generated output.</p>
+          <p id="ember1563" class="ember-view reader-content-blocks__paragraph">While data retrieval augmentation from
+            corporate data stores with RAG (Retrieval-Augmented Generation) architecture can't completely solve the
+            issue of factual accuracy, it can guide the AI towards more reliable answers, backed by specific source
+            references for verification. However, different queries may still yield slightly varied responses. This
+            characteristic makes automated tests difficult, as the answers would require a human to correctly assess the
+            quality of the response. For automated testing of the AI system, I recommend the approach similar to that
+            used in standardized tests. This involves crafting prompts that pose multiple-choice questions to the AI,
+            with answers that can be readily verified by a script, rather than requiring human intervention.</p>
+          <p id="ember1564" class="ember-view reader-content-blocks__paragraph">The risk of Todd being suddenly replaced
+            by a completely different AI entity is real. This could occur during a routine vendor update (where the
+            model's weights are altered), or through a deliberate attack aimed at substituting the model with a
+            compromised one. This rogue model might be engineered to react to specific keywords, disclosing sensitive
+            information in a manner designed to evade privacy solutions. To mitigate this risk, robust IAM policies,
+            signatures for the AI's binaries and weights (the latter being of highest importance), and regular automated
+            performance tests are essential. Additionally, there's a reputational hazard if the model begins exhibiting
+            biased, abusive, or offensive behavior. Could this lead to sexual harassment lawsuits against companies for
+            the misconduct of their AI assistants?</p>
+          <p id="ember1565" class="ember-view reader-content-blocks__paragraph">While control over the binary and
+            primary weights is crucial, many AI architectures permit fine-tuning. A case in point is LoRA (Low-Rank
+            Adaptation of Large Language Models). LoRA involves training a minor add-on to the core model without
+            altering its main weights. This can be necessary for optimal performance with company-specific vocabulary or
+            context, even helping the AI align with the prevailing corporate communication culture. Think of this add-on
+            like a performance-enhancing substance (akin to coffee), subtly altering behavior, or as additional
+            knowledge, reminiscent of Trinity downloading helicopter piloting skills in 'The Matrix'. These
+            supplementary weights are critical and must be controlled. Despite being significantly smaller in size than
+            the main weights, making them easier to download and replace undetected by standard network volumetric
+            anomaly checks, their updates should be a meticulously controlled process with rigorous quality control
+            checks. You don't want any bad influence on Todd, do you?</p>
+          <p id="ember1566" class="ember-view reader-content-blocks__paragraph">Another significant risk with generative
+            AI (genAI) models is the inherent challenge in validating their internal content, as their weights represent
+            an abstract, highly compressed version of the training data. The PII leaks by the model mentioned above
+            underscore that personal data might have been part of the training set itself. Given the immense data
+            requirements for training large models, it could be challenging for vendors to prove that PII or other
+            sensitive information wasn't included in the training set. Although this issue can't be rectified within the
+            model itself, it's possible to implement an additional layer of control to mitigate this risk, such as
+            integrating a PII-specific model.</p>
+          <h3 id="ember1567" class="ember-view">Have we mentioned security? Adding Andrew to the team to handle PII</h3>
+          <p id="ember1568" class="ember-view reader-content-blocks__paragraph">Even when a user is authorized to access
+            certain information, there could still be configuration issues within the IAM system. Or, more concerning,
+            the user's identity might have been compromised by a bad actor. Ideally, any accidental disclosure of PII in
+            AI-generated responses should be intercepted before reaching the user. While existing solutions employ
+            simple searches within unstructured answers for identifiers like addresses, SSNs, and names, PII can still
+            slip through unnoticed. This is where your new team member, Andrew, steps in, with his sole focus being the
+            detection of PII in questions and responses.</p>
+          <p id="ember1569" class="ember-view reader-content-blocks__paragraph">Andrew's personality is the opposite of
+            Todd. While Todd is a fountain of creativity, skilled at integrating external data sources and boasting an
+            English proficiency surpassing most humans, Andrew specializes in the meticulous task of PII detection.
+            Unlike Todd, who excels at generating content, Andrew's strength lies in 'Named Entity Recognition' (NER) -
+            a key capability of the first BART models and more recently, special-purpose LLMs. These models are not
+            designed for text generation, but their proficiency in classifying elements within unstructured text, such
+            as geographical locations, names, and SSNs, is unparalleled.</p>
+          <p id="ember1570" class="ember-view reader-content-blocks__paragraph">Andrew's role involves scrutinizing the
+            responses generated by Todd to ensure no PII has inadvertently been included. If PII is detected, the
+            system's response can vary. In some cases, accessing PII might require appropriate entitlements within the
+            IAM, and Andrew, after verifying user privileges, would allow the response through, with the decision duly
+            noted in the logs. A more complex system might require managerial approval for responses containing PII.
+            Regardless of the method, our handling of PII will be thoroughly tracked and logged, fulfilling the
+            requirements of privacy laws like CCPA and GDPR. You can specify what Andrew does when he discovers PII in
+            the user questions or Todd's answers.</p>
+          <p id="ember1571" class="ember-view reader-content-blocks__paragraph">With our final setup (again, new
+            additions are highlighted in green), you've not only enveloped Todd in a cocoon of corporate controls but
+            also assembled a team comprising Andrew, Berta, and several Agent Smiths. Together, they promise stellar
+            performance at a reasonable cost. While real-world architectures may be more intricate, this governance
+            framework offers a solid foundation for responsibly implementing AI. The future lies in an ecosystem of
+            specialized and dedicated AI systems, seamlessly interacting with each other, corporate infrastructures, the
+            external world, and human employees.</p>
+            <p><img class="img-fluid"
+              src="assets/img/article-1/post-new-kid-image-7.webp" alt=""></p>
+          <h3 id="ember1573" class="ember-view">Conclusion</h3>
+          <p id="ember1574" class="ember-view reader-content-blocks__paragraph">In an era where information about AI
+            either gravitates towards technical advice or non-technical dystopian narratives, practical guidance for
+            managers navigating the complex landscape of AI implementation in enterprises is scarce. This article aimed
+            to bridge that gap by highlighting common risks associated with generative AI and providing a toolkit of
+            questions for technical teams implementing AI in your business unit:</p>
+          <ol>
+            <li>What specific problems will this AI implementation solve, and how will its impact be quantitatively
+              measured?</li>
+            <li>Where will the model be hosted - within the corporate perimeter or externally? Is it based on an
+              open-source foundational model, or is it proprietary?</li>
+            <li>What are the hardware (or cloud infrastructure) and any hidden licensing requirements (like those for
+              the vector database) for deployment? What personnel resources are needed for maintenance, and is there a
+              training requirement for system users?</li>
+            <li>What data formed the training set for the main model, and what was used for fine-tuning?</li>
+            <li>How does the behavior of the fine-tuned model differ from the generic model?</li>
+            <li>Does the implementation adhere to best practices such as IAM controls, immutable logging of access and
+              interaction, and binary signatures?</li>
+            <li>For retrieval-augmented models, are AIM entitlements consistently applied between the AI implementation
+              and access to data stores?</li>
+            <li>In the event of compromised credentials, what detection controls are in place to prevent unauthorized AI
+              access?</li>
+            <li>How is PII managed in the input and output of the model?</li>
+            <li>Are performance tests in place for automatic, ongoing verification of model accuracy and the absence of
+              bias or negative tendencies?</li>
+            <li>What is the process for updating binaries and weights, including main and additional LoRA-like add-ons?
+            </li>
+          </ol>
+          <p id="ember1576" class="ember-view reader-content-blocks__paragraph">As we conclude our exploration, business
+            leaders are now armed not only with helpful questions but also with a strategic vision. This vision
+            emphasizes the transformation of an AI system like Todd from raw potential to a dynamic driver of corporate
+            innovation and growth. With Berta's analytical expertise, Andrew's focus on safeguarding sensitive data, and
+            the Agent Smiths' precise task execution, Todd's capabilities evolve from mere potential to a tangible asset
+            for your organization. Engaging with AI vendors and IT departments now becomes an essential step in
+            unlocking these latent opportunities. As leaders in this technological advancement, our role is to guide
+            this process with a focus on maximizing AI's capabilities and impact. We aim to enter this new era of
+            innovation with a clear directive: to ensure that our technological advancements not only contribute to
+            corporate growth but also resonate with the fundamental values at the core of our businesses.</p>
+          <h2 id="ember1577" class="ember-view">Credits</h2>
+          <p id="ember1578" class="ember-view reader-content-blocks__paragraph">Special thanks to <a id="ember1579"
+              class="ember-view" href="https://www.linkedin.com/in/georgy-okrokvertskhov-7a974225/">Georgy
+              Okrokvertskhov</a> and <a id="ember1580" class="ember-view"
+              href="https://www.linkedin.com/in/shanshanpa/">ShanShan Pa</a>for their insightful review and valuable
+            advice that greatly contributed to my evolving thinking about using AI responsibly in the corporate
+            environment.</p>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; AIAxess 2025</div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

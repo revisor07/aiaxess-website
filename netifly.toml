@@ -15,22 +15,38 @@
 
 [[redirects]]
   from = "/art-gallery.html"
-  to = "/art-gallery"
+  to = "/products/art-gallery"
   status = 301
 
 [[redirects]]
   from = "/medical-offices.html"
-  to = "/medical-offices"
+  to = "/products/medical-offices"
   status = 301
 
 [[redirects]]
   from = "/property-management.html"
-  to = "/property-management"
+  to = "/products/property-management"
   status = 301
 
 [[redirects]]
   from = "/about.html"
   to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/article-1.html"
+  to = "/publications/from-genai-novice-to-a-pro-a-non-techies-guide-for-enterprise-ai-integration"
+  status = 301
+
+[[redirects]]
+  from = "/article-2.html"
+  to = "/publications/practical-access-control-for-genai"
+  status = 301
+
+
+[[redirects]]
+  from = "/article-3.html"
+  to = "/publications/practical-access-control-for-genai-part-ii-introducing-raag-retrieval-and-access-augmented-generation"
   status = 301
 
 # Optional: Catch-all rule for other .html files (if any)
