@@ -40,13 +40,13 @@
 
 [[redirects]]
   from = "/article-2.html"
-  to = "/publications/practical-access-control-for-genai"
+  to = "/publications/practical-access-control-for-genai-part-i"
   status = 301
 
 
 [[redirects]]
   from = "/article-3.html"
-  to = "/publications/practical-access-control-for-genai-part-ii-introducing-raag-retrieval-and-access-augmented-generation"
+  to = "/publications/practical-access-control-for-genai-part-ii"
   status = 301
 
 # Optional: Catch-all rule for other .html files (if any)
