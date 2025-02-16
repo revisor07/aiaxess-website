@@ -129,8 +129,13 @@ h2, .h2 {
 }
 
 #mainNav .navbar-brand img {
-    height: 40px; /* Controls height */
-    
+    height: 3rem; /* Controls height */
+    margin: 0.6rem;
+}
+@media (max-width: 991px){
+    #mainNav .navbar-brand img {
+        margin: 0;
+    }
 }
   
   
