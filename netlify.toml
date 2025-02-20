@@ -1,15 +1,15 @@
 [[redirects]]
   from = "/publications/from-genai-novice-to-a-pro-a-non-techies-guide-for-enterprise-ai-integration"
-  to = "article-1.html"
+  to = "/publications/article-1.html"
   status = 200
   
 [[redirects]]
   from = "/publications/practical-access-control-for-genai-part-i"
-  to = "article-2.html"
+  to = "/publications/article-2.html"
   status = 200
 
 [[redirects]]
   from = "/publications/practical-access-control-for-genai-part-ii"
-  to = "article-3.html"
+  to = "/publications/article-3.html"
   status = 200
   
