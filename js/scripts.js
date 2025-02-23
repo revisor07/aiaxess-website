@@ -30,7 +30,6 @@ window.addEventListener('DOMContentLoaded', event => {
   };
 
 });
-
 // Fade in animation for every page
 window.addEventListener('load', (event) => {
   document.body.classList.add('loaded');

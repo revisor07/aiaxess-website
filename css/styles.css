@@ -5,6 +5,7 @@ body{
 body.loaded {
     opacity: 1;
 }
+
 .black-intro {
     margin-top: 0rem;
     background-color: black;
