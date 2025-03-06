@@ -17,12 +17,6 @@ h2, .h2 {
     text-decoration-thickness: 3px !important;
     text-underline-offset: 7px;
 }
-
-.masthead {
-    background: 
-    linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.7) 50%, #000 100%), url("../assets/img/wallpaper.webp");
-  }
-
   
 .title-section {
     padding-top: 10rem;
@@ -90,6 +84,9 @@ h2, .h2 {
         
     }
 }
+
+
+
 
 
 .card {

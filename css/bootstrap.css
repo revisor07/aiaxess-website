@@ -241,12 +241,13 @@ sup {
 a {
   color: var(--bs-link-color);
   text-decoration: underline;
+  transition: color 0.1s ease-in-out;
 }
-/*
+
 a:hover {
   color: var(--bs-link-hover-color);
 }
-*/
+
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
@@ -11104,7 +11105,7 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/wallpaper.webp");
+  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.7) 50%, #000 100%), url("/assets/img/wallpaper.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
