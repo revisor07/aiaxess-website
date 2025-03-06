@@ -34,28 +34,3 @@ window.addEventListener('DOMContentLoaded', event => {
 window.addEventListener('load', (event) => {
   document.body.classList.add('loaded');
 });
-
-// Prevent products page clickability in desktop view
-document.addEventListener('DOMContentLoaded', () => {
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-  function updateDropdownToggle() {
-    if (window.innerWidth < 992) { // Your mobile breakpoint
-      dropdownToggle.setAttribute('data-bs-toggle', 'dropdown');
-    } else {
-      dropdownToggle.removeAttribute('data-bs-toggle');
-    }
-  }
-
-  // Initial check on page load
-  updateDropdownToggle();
-
-  // Check on window resize
-  window.addEventListener('resize', updateDropdownToggle);
-
-    // Bootstrap Dropdown initialization on mobile
-    if (window.innerWidth < 992) {
-        new bootstrap.Dropdown(dropdownToggle);
-    }
-
-});
