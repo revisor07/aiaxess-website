@@ -67,7 +67,12 @@
           <deep-chat connect='{
             "url": "https://be01.infra.aiaxess.com:9999/chat/message",
             "method": "POST"
-          }' style="border-radius: 8px"></deep-chat>
+          }' style="border-radius: 8px"
+          requestInterceptor = requestInterceptor
+          responseInterceptor = responseInterceptor
+          style="border-radius: 8px"
+          id="deepChatId">
+        </deep-chat>
         </div>
       </div>
     </div>
@@ -80,6 +85,7 @@
   <script src="/js/bootstrap.bundle.min.js"></script>
   <script src="/js/scripts.js"></script>
   <script async defer src="/js/deepChat.bundle.js" type="module"></script>
+  <script src="/js/deepchat_interceptors.js"></script>
 </body>
 
 </html>
