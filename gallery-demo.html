@@ -72,13 +72,13 @@
           <deep-chat connect='{
             "url": "https://be01.infra.aiaxess.com:9999/chat/message",
             "method": "POST"
-          }' style="border-radius: 8px"
+          }'
           requestInterceptor = requestInterceptor
           responseInterceptor = responseInterceptor
           messageStyles='{
             "default": {
               "user": {"bubble": {"backgroundColor": "#64a19d"}},
-              "shared": {"bubble": {"borderRadius": "18px"}}
+              "shared": {"bubble": {"borderRadius": "18px", "maxWidth":"40rem" }}
             }
           }'
           textInput='{
