@@ -142,7 +142,7 @@ h2, .h2 {
 deep-chat {
     background-color: var(--bs-light-rgb) !important;
     border: none !important;
-    margin-top: 10rem;
+    margin-top: 5rem;
     margin-bottom: 10rem;
     display: block !important;
     width: 100% !important;
