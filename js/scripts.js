@@ -34,3 +34,18 @@ window.addEventListener('DOMContentLoaded', event => {
 window.addEventListener('load', (event) => {
   document.body.classList.add('loaded');
 });
+
+// auto scroll for chatbot interaction
+const deepChat = document.getElementById('deepChatId');
+if (deepChat) {
+    const scrollToBottom = () => {
+        const offset = 100; //pixels
+        window.scrollTo({
+            top: deepChat.offsetTop + deepChat.offsetHeight - window.innerHeight + offset,
+            behavior: 'smooth'
+        });
+    };
+
+    deepChat.addEventListener('response', scrollToBottom);
+    deepChat.addEventListener('message', scrollToBottom);
+}
