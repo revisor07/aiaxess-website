@@ -63,7 +63,11 @@
   <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
+          <h3 class="mb-4 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-diamond me-4" style="color: #64a19d;"></i>
+            Gallery Almine Rech Artificial Assistant
+          </h3>
           <script src="/js/deepchat_interceptors.js"></script>
           <deep-chat connect='{
             "url": "https://be01.infra.aiaxess.com:9999/chat/message",
@@ -71,7 +75,16 @@
           }' style="border-radius: 8px"
           requestInterceptor = requestInterceptor
           responseInterceptor = responseInterceptor
-          style="border-radius: 8px"
+          messageStyles='{
+            "default": {
+              "user": {"bubble": {"backgroundColor": "#64a19d"}},
+              "shared": {"bubble": {"borderRadius": "18px"}}
+            }
+          }'
+          textInput='{
+            "placeholder": {
+              "text": "Ask me about the gallery!"
+          }}'
           id="deepChatId">
         </deep-chat>
         </div>

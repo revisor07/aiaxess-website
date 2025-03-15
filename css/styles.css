@@ -138,11 +138,18 @@ h2, .h2 {
     }
 }
 
+/* deep chat*/
 deep-chat {
+    background-color: var(--bs-light-rgb) !important;
+    border: none !important;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     display: block !important;
     width: 100% !important;
+    height: auto !important;
+    font-size: 1.3rem !important;
+    font-family: var(--bs-body-font-family) !important;
 }
-
   
 
   
