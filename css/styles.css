@@ -134,7 +134,7 @@ h2, .h2 {
 }
 
 #mainNav .navbar-brand img {
-    height: 3.5rem;
+    height: 3rem;
     margin: 0.3rem;
 }
 @media (max-width: 991px){
